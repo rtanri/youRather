@@ -3,7 +3,7 @@ import {receiveUsers} from './users'
 import {receiveQuestions} from './questions'
 
 export function handleInitialData() {
-    return () => {
+    return (dispatch) => {
         return getInitialData()
         .then(({users, questions}) => {
             dispatch(receiveUsers(users))
