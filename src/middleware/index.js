@@ -1,8 +1,9 @@
 import logger from './logger'
-import thunk from './redux-thunk'
-import {applyMiddleware} from 'thunk'
+import thunk from 'redux-thunk'
+import {applyMiddleware} from 'redux'
+// import {createLogger} from "redux-logger";
 
-export default applyMiddleware ({
+export default applyMiddleware (
     thunk,
-    logger
-})
+    logger,
+)
