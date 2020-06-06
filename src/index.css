@@ -1,10 +1,11 @@
 body {
-  margin: 0;
+  margin:0 20%;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
 }
 
 code {
@@ -18,6 +19,7 @@ code {
   padding-bottom: 10px;
   font-size: 3em;
 }
+
 
 .question {
   width: 100%;
@@ -77,10 +79,42 @@ code {
   text-align: center
 }
 
-.optionsOne{
-
-}
 
 .margin{
   margin: 20px;
+}
+
+.menu-bar {
+  display: flex;
+  background-color: #ffb367;
+  margin: 0;
+}
+
+.active {
+  color:#f57b51
+}
+
+.nav {
+  display: flex;
+  padding-left: 50px;
+  /* important to shrink the menu-bar, delete the bullet */
+  margin:0;
+  padding:0;
+  list-style: none;
+}
+
+.nav li {
+  padding: 10px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.nav li:hover{
+  background-color:#f57b51
+}
+
+
+.nav-account{
+  margin-left: auto;
+  padding-right: 10px;
 }

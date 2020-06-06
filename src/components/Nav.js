@@ -1,26 +1,22 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
+import React, {Component, Fragment} from 'react'
 
-export default function Nav () {
-  return (
-    <nav className='nav'>
-      <ul>
-        <li>
-          <NavLink to='/' exact activeClassName='active'>
-            Dashboard
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to='/Leaderboard' activeClassName='active'>
-            Leaderboard
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to='/Add-New' activeClassName='active'>
-            Add Question
-          </NavLink>
-        </li>
-      </ul>
-    </nav>
-  )
-} 
+class Nav extends Component {
+  render(){
+      return (
+          <Fragment>
+                <ul className='nav'>
+                    <li activeClassName='active'>
+                        Home
+                    </li>
+                    <li activeClassName='active'>
+                        Leaderboard
+                    </li>
+                    <li activeClassName='active'>
+                        Add Question
+                    </li>
+                </ul>
+          </Fragment>
+      )
+  }
+}
+export default Nav
