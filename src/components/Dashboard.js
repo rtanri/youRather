@@ -2,6 +2,7 @@ import React, {Component, Fragment} from 'react'
 import {connect} from 'react-redux'
 import Question from './Question'
 import MenuBar from './MenuBar'
+import Divider from './Divider'
 
 class Dashboard extends Component {
     render(){
@@ -10,6 +11,7 @@ class Dashboard extends Component {
             <Fragment>
                 <MenuBar />
                 <h1 className='page-title'>Your Question Pool</h1>
+                <Divider />
                 <div className='question-form margin'>
                     {this.props.questionIds.map((id) => (
                         <Question key={id} id={id}></Question>
