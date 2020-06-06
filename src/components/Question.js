@@ -6,7 +6,7 @@ class Question extends Component {
         const {question} = this.props
 
         if (question === null) {
-            return <p>This Question Doesn't Exist</p>
+            return <p>Sorry, this question doesn't exist</p>
         }
 
         const {optionOne, optionTwo} = question
@@ -19,11 +19,11 @@ class Question extends Component {
                 </div>
 
                 <div className='form-body'>
-                    <p className='options'>{optionOne.text}</p>
+                    <p className='optionsOne'>{optionOne.text}</p>
                     <div className='or-seperator'>
                         <p className='inline-p'>OR</p>
                     </div>
-                    <p className='options'>{optionTwo.text}</p>
+                    <p className='optionsTwo'>{optionTwo.text}</p>
                 </div>
             </div>
         )
