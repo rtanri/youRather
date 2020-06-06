@@ -10,7 +10,7 @@ class Dashboard extends Component {
                 <h1 className='page-title'>Your Question Pool</h1>
                 <div className='question-form margin'>
                     {this.props.questionIds.map((id) => (
-                        <Question key={id}></Question>
+                        <Question key={id} id={id}/>
                     ))}
                 </div>
             </div>

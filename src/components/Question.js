@@ -1,8 +1,16 @@
 import React, {Component} from 'react'
-// import {connect} from 'react-redux'
+import {connect} from 'react-redux'
 
 class Question extends Component {
     render(){
+        const {question} = this.props
+
+        if (question === null) {
+            return <p>This Question Doesn't Exist</p>
+        }
+
+        const {optionOne, optionTwo} = question
+
         return (
             <div className='form margin'>
                 <div className='form-header'>
@@ -11,15 +19,24 @@ class Question extends Component {
                 </div>
 
                 <div className='form-body'>
-                    <p className='options'>Option 1</p>
+                    <p className='options'>{optionOne.text}</p>
                     <div className='or-seperator'>
                         <p className='inline-p'>OR</p>
                     </div>
-                    <p className='options'>Option 2</p>
+                    <p className='options'>{optionTwo.text}</p>
                 </div>
             </div>
         )
     }
 }
 
-export default Question
+function mapStateToProps({authedUser, questions}, {id}) {
+    const question = questions[id]
+
+    return {
+        authedUser,
+        question,
+    }
+}
+
+export default connect(mapStateToProps)(Question)
