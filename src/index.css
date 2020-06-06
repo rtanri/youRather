@@ -58,6 +58,9 @@ code {
   font-weight: bold;
 }
 
+.form-body{
+  text-align: center;
+}
 
 .or-seperator{
   box-sizing: border-box;
@@ -74,9 +77,8 @@ code {
   text-align: center
 }
 
-.options{
-  text-align: center;  
-  /* padding: 10px; */
+.optionsOne{
+
 }
 
 .margin{
