@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 
 class Question extends Component {
     render(){
@@ -10,22 +11,23 @@ class Question extends Component {
         }
 
         const {optionOne, optionTwo} = question
+        const {id} = this.props
 
         return (
-            <div className='form margin'>
-                <div className='form-header'>
-                    <p className="form-title">Would You Rather</p>
-                    <hr />
-                </div>
-
-                <div className='form-body'>
-                    <p className='optionsOne'>{optionOne.text}</p>
-                    <div className='or-seperator'>
-                        <p className='inline-p'>OR</p>
+                <Link to={`/questions/${id}`} className='form margin question-form'>
+                    <div className='form-header'>
+                        <p className="form-title">Would You Rather</p>
+                        <hr />
                     </div>
-                    <p className='optionsTwo'>{optionTwo.text}</p>
-                </div>
-            </div>
+
+                    <div className='form-body'>
+                        <p className='optionsOne'>{optionOne.text}</p>
+                        <div className='or-seperator'>
+                            <p className='inline-p'>OR</p>
+                        </div>
+                        <p className='optionsTwo'>{optionTwo.text}</p>
+                    </div>
+                </Link>
         )
     }
 }
@@ -36,6 +38,7 @@ function mapStateToProps({authedUser, questions}, {id}) {
     return {
         authedUser,
         question,
+        id,
     }
 }
 
