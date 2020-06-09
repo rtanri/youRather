@@ -1,27 +1,28 @@
-import React, {Component} from 'react'
+import React, {Component, Fragment } from 'react'
 import {connect} from 'react-redux'
-import {handleInitialData} from '../actions/shared'
-// import Dashboard from './Dashboard'
+import {handleInitialUsers} from '../actions/shared'
 import Login from './Login'
-// import LoadingBar from 'react-redux-loading'
-// import Question from './Question'
+import Dashboard from './Dashboard'
+
+
 
 class App extends Component {
   componentDidMount() {
-    this.props.dispatch(handleInitialData())
+    this.props.dispatch((handleInitialUsers()))
   }
+
   render() {
     return (
-      <div>
-        {this.props.loading === true ? null : <Login />}
-      </div>
+    <Fragment> 
+        {this.props.authedUser === null ? <Login /> : <Dashboard/>}     
+    </Fragment>
     )
   }
 }
 
 function mapStateToProps ({authedUser}){
   return {
-    loading: authedUser === null
+    authedUser
   }
 }
 

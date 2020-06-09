@@ -1,17 +1,25 @@
-import {getInitialData} from '../utils/api'
+import {getInitialUsers, getInitialQuestions} from '../utils/api'
 import {receiveUsers} from './users'
 import {receiveQuestions} from './questions'
-import {setAuthedUser} from './authedUser'
+import {setAuthedUser} from '../actions/authedUser'
 
-const AUTHED_ID = 'johndoe'
+const AUTHED_ID = null;
 
-export function handleInitialData() {
+export function handleInitialUsers() {
     return (dispatch) => {
-        return getInitialData()
-        .then(({users, questions}) => {
+        return getInitialUsers()
+        .then((users) => {
             dispatch(receiveUsers(users))
-            dispatch(receiveQuestions(questions))
             dispatch(setAuthedUser(AUTHED_ID))
+        })
+    }
+}
+
+export function handleInitialQuestions() {
+    return (dispatch) => {
+        return getInitialQuestions()
+        .then((questions) => {
+            dispatch(receiveQuestions(questions))
         })
     }
 }

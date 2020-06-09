@@ -40,6 +40,7 @@ class Login extends Component {
                                     : users[selectedUser].avatarURL}
                                     alt={users[selectedUser]}
                                     className='profile-pic'/> 
+                                    
                                 <select 
                                     className='login-user-select' 
                                     onChange={(e) => this.onSelectUser(e.target.value)}>
@@ -53,7 +54,7 @@ class Login extends Component {
                                 </select>                        
                             </div>
 
-                            <button className='signin-button'>SIGN IN</button>
+                            <button className='button'>SIGN IN</button>
                         </form>
                     </div>
                 </div>

@@ -1,15 +1,17 @@
 import React, { Component, Fragment } from 'react'
+import {connect} from 'react-redux'
 
-class Account extends Component {
+class AccountSetting extends Component {
     render(){
+        const {authedUser} = this.props
         return (
             <Fragment>
                 <ul className='nav nav-account'>
-                    <li activeClassName='active'>
+                    <li>
                         Logout
                     </li>
-                    <li activeClassName='active'>
-                        Revin
+                    <li>
+                        {authedUser}
                     </li>
                 </ul>
             </Fragment>
@@ -17,4 +19,10 @@ class Account extends Component {
     }
 }
 
-export default Account
+function mapStateToProps({authedUser}){
+    return {
+        authedUser
+    }
+}
+
+export default connect(mapStateToProps)(AccountSetting)
