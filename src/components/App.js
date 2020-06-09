@@ -1,7 +1,7 @@
 import React, {Component, Fragment } from 'react'
 import {connect} from 'react-redux'
 import {handleInitialUsers} from '../actions/shared'
-import Login from './Login'
+// import Login from './Login'
 import Dashboard from './Dashboard'
 
 
@@ -14,7 +14,8 @@ class App extends Component {
   render() {
     return (
     <Fragment> 
-        {this.props.authedUser === null ? <Login /> : <Dashboard/>}     
+        <Dashboard />
+        {/* {this.props.authedUser === null ? <Login /> : <Dashboard/>}      */}
     </Fragment>
     )
   }
