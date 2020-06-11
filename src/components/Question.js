@@ -21,11 +21,11 @@ class Question extends Component {
                     </div>
 
                     <div className='form-body'>
-                        <p className='optionsOne'>{optionOne.text}</p>
+                        <p className='optionOne'>{optionOne.text}</p>
                         <div className='or-seperator'>
                             <p className='inline-p'>OR</p>
                         </div>
-                        <p className='optionsTwo'>{optionTwo.text}</p>
+                        <p className='optionTwo'>{optionTwo.text}</p>
                     </div>
                 </Link>
         )
