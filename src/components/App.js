@@ -2,7 +2,10 @@ import React, {Component, Fragment } from 'react'
 import {connect} from 'react-redux'
 import {handleInitialUsers} from '../actions/shared'
 // import Login from './Login'
-import Dashboard from './Dashboard'
+// import Dashboard from './Dashboard'
+import QuestionDetail from './QuestionDetail'
+import FaCheck from 'react-icons/lib/fa/check'
+
 
 
 
@@ -14,7 +17,7 @@ class App extends Component {
   render() {
     return (
     <Fragment> 
-        <Dashboard />
+        <QuestionDetail.js />
         {/* {this.props.authedUser === null ? <Login /> : <Dashboard/>}      */}
     </Fragment>
     )
