@@ -1,81 +1,83 @@
-import React, {Component, Fragment} from 'react'
-import {connect} from 'react-redux'
-import Question from './Question'
+import React, { Component, Fragment } from 'react'
+import { connect } from 'react-redux'
+import Poll from './Poll'
 import MenuBar from './MenuBar'
-import {handleInitialQuestions} from '../actions/shared'
+import { handleInitialPolls } from '../actions/shared'
 
 class Dashboard extends Component {
-    state= {
-        Tab: 'unanswered'
+    state = {
+        selectedTab: 'unanswered'
     }
 
-    componentDidMount(){
-        this.props.dispatch(handleInitialQuestions())
+    componentDidMount () {
+        this.props.dispatch(handleInitialPolls())
     }
 
-
-    render(){
-        const {answeredQuestions, unansweredQuestions} = this.props
-        return (
+    render () {
+        const { answeredPolls, unansweredPolls,loadingBar } = this.props
+            return (
             <Fragment>
                 <MenuBar />
-                <h1 className='page-title'>Your Question Pool</h1>
                 <ul className='divider'>
-                    <li
-                        className={this.state.Tab === 'unanswered' ? 'active' :''}
-                        onClick={() => {this.setState({Tab: 'unanswered'})}}
-                    >Unanswered
+                    <li 
+                        className={ this.state.selectedTab === 'unanswered' ? 'active' : 'li-hover'}
+                        onClick={() => {this.setState({ selectedTab: 'unanswered'})}}>
+                        Unanswered
                     </li>
-
-                    <li
-                        className={this.state.Tab === 'answered' ? 'active':''}
-                        onClick={() => {this.setState({Tab:'answered'})}}    
-                    >Answered
+                    <li 
+                        className={ this.state.selectedTab === 'answered' ? 'active' : 'li-hover'}
+                        onClick={() => {this.setState({ selectedTab: 'answered'})}}>
+                        Answered
                     </li>
                 </ul>
-
                 {
-                    this.state.Tab === 'unanswered' && unansweredQuestions
-                    ? <div className='question-form margin'>
-                        {unansweredQuestions.map((id) => (
-                            <Question key={id} id={id} />
-                        ))}
-                        </div>
-                    : null 
+                    !loadingBar.default && Object.keys(unansweredPolls).length === 0 && this.state.selectedTab === 'unanswered'
+                    ? <p className='no-results'>no results</p>
+                    : null
                 }
-
                 {
-                    this.state.Tab === 'answered' && answeredQuestions
-                    ? <div className='question-form margin'>
-                        {answeredQuestions.map((id) => (
-                            <Question key={id} id={id} />
-                        ))}
-                        </div>
-                    : null 
+                    !loadingBar.default && Object.keys(answeredPolls).length === 0 && this.state.selectedTab === 'answered'
+                    ? <p className='no-results'>no results</p>
+                    : null
                 }
+                { 
+                    loadingBar.default
+                    ? <p className='loading'>Loading ...</p>
+                    : this.state.selectedTab === 'unanswered' && Object.keys(unansweredPolls).length !== 0
+                        ? <div className='question-form margin'>
+                            {unansweredPolls.map((id) => (
+                            <Poll key={id} id={id}/> ))}
+                        </div>     
+                        : this.state.selectedTab === 'answered' && Object.keys(answeredPolls).length !== 0
+                        ? <div className='question-form margin'>
+                            {answeredPolls.map((id) => (
+                            <Poll key={id} id={id}/> ))}
+                        </div>     
+                        : null
+                 }             
             </Fragment>
-        )
+            )
     }
 }
 
-
-function mapStateToProps ({ questions, authedUser, users }) {
+function mapStateToProps ({ polls, authedUser, users, loadingBar }) {
     const user = users[authedUser]
 
-    const answeredQuestions = Object.keys(questions).length !== 0
-        ? Object.keys(user[authedUser].answers)
-            .sort((a,b) => questions[b].timestamp - questions[a].timestamp)
+    const answeredPolls = Object.keys(polls).length !== 0
+        ? Object.keys(user.answers)
+            .sort((a,b) => polls[b].timestamp - polls[a].timestamp)
         : []
 
-    const unansweredQuestions = Object.keys(questions).length !== 0
-        ? Object.keys(questions)
-            .filter(questionID => !answeredQuestions.includes(questionID))
-            .sort((a,b) => questions[b].timestamp - questions[a].timestamp)
+    const unansweredPolls = Object.keys(polls).length !== 0
+        ? Object.keys(polls)
+            .filter(pollID => !answeredPolls.includes(pollID))
+            .sort((a,b) => polls[b].timestamp - polls[a].timestamp)
         : []
 
     return {
-        answeredQuestions,
-        unansweredQuestions,
+        answeredPolls,
+        unansweredPolls,
+        loadingBar,
     }
 }
 

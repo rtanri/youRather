@@ -1,22 +1,30 @@
 import React, { Component, Fragment } from 'react'
-import {connect} from 'react-redux'
-import {setAuthedUser} from '../actions/authedUser'
+import { connect } from 'react-redux'
+import { setAuthedUser } from '../actions/authedUser'
+import { withRouter } from 'react-router-dom'
 
 class AccountSetting extends Component {
     handleLogout = () => {
-        const {setAuthedUser} = this.props
+        const { setAuthedUser, history } = this.props
         setAuthedUser(null)
+        history.push('/')
     }
 
-    render(){
-        const {authedUser} = this.props
+    render () {
+        const { authedUser, avatar } = this.props
         return (
             <Fragment>
                 <ul className='nav nav-account'>
                     <li onClick={this.handleLogout} className='nav-li'>
                         Logout
                     </li>
-                    <li className='nav-li'>
+                    <li className='user-name nav-li'>
+                        <img 
+                                    src={avatar}
+                                    alt={`Avatar of ${avatar}`}
+                                    className='profile-pic scale-down'/>
+                    </li>
+                    <li className='padding-zero user-name nav-li'>
                         {authedUser}
                     </li>
                 </ul>
@@ -25,19 +33,20 @@ class AccountSetting extends Component {
     }
 }
 
-function mapStateToProps({authedUser, users}){
+function mapStateToProps({ authedUser, users }) {
+    const avatar = users[authedUser].avatarURL
     return {
         authedUser,
-        users
+        avatar
     }
 }
 
-function mapDispatchToProps(dispatch){
-    return{
+function mapDispatchToProps(dispatch) {
+    return {
         setAuthedUser: (id) => {
             dispatch(setAuthedUser(id))
         }
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AccountSetting)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AccountSetting))

@@ -193,3 +193,14 @@ code {
   cursor: pointer;
   text-decoration: none;
 }
+
+.fix-answered-li {
+  box-sizing: border-box;
+  padding-left: 40px;
+  padding-top: 35px;
+  padding-bottom: 5px;
+  padding-right: 10px;
+  user-select: none;
+  text-decoration: none;
+  list-style-type: none;
+}

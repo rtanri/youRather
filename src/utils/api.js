@@ -3,29 +3,26 @@ import {
     _getQuestions,
     _saveQuestion,
     _saveQuestionAnswer,
-} from "./_DATA.js"
+} from './_DATA'
 
 export function getInitialUsers() {
-    return Promise.all([
-        _getUsers()
-    ]).then(users => ({
-        users
-    }))
+    return _getUsers()
+        .then(users => ({
+           users 
+        }))
 }
 
-export function getInitialQuestions() {
-    return Promise.all([
-        _getQuestions()
-    ]).then(questions => ({
-        questions
-    }))
+export function getInitialPolls() {
+    return _getQuestions()
+        .then(questions => ({
+            questions 
+        }))
 }
 
-export function saveQuestionAPI (info){
+export function savePollAPI (info) {
     return _saveQuestion(info)
 }
 
-export function saveQuestionAnswerAPI (info){
+export function savePollAnswerAPI (info) {
     return _saveQuestionAnswer(info)
 }
-

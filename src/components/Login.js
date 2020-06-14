@@ -26,13 +26,13 @@ class Login extends Component {
 
         return (
             <Fragment>
-                <div className='signin-form'>
+                <div className='form signin-form'>
                     <div className='form-header'>
-                        <p className='starter-title'>Would You Rather: Login Page</p>
+                        <p className='form-title'>Would You Rather - login</p>
                     </div>
                     <div className='form-body'>
                         <form onSubmit={this.handleLogin}>
-                            <h1>Select a user: </h1>
+                            <label className='sigin-body-p'>Select a user: </label>
                             <div className='signin-body-form'>
                                 <img 
                                     src={selectedUser === '' 
@@ -40,11 +40,10 @@ class Login extends Component {
                                     : users[selectedUser].avatarURL}
                                     alt={users[selectedUser]}
                                     className='profile-pic'/> 
-                                    
                                 <select 
                                     className='login-user-select' 
                                     onChange={(e) => this.onSelectUser(e.target.value)}>
-                                    <option value=""> Press to Select</option>
+                                    <option value=""> Select User</option>
                                     {
                                         Object.keys(users).map(user => 
                                             <option className='test' key={user} value={user}>

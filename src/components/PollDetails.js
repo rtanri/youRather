@@ -3,9 +3,9 @@ import { connect } from 'react-redux'
 import MenuBar from './MenuBar'
 import { formatDate } from '../utils/helpers'
 import FaCheck from 'react-icons/lib/fa/check'
-import { handleSaveQuestionAnswer } from '../actions/shared'
+import { handleSavePollAnswer } from '../actions/shared'
 
-class QuestionDetails extends Component {
+class PollDetails extends Component {
     state = {
         selectedOption: ''
     }
@@ -19,22 +19,24 @@ class QuestionDetails extends Component {
     submitAnswer = (e) => {
         e.preventDefault()
 
-        const { saveQuestionAnswer } = this.props
+        const { savePollAnswer } = this.props
         const answer = this.state.selectedOption
 
-        saveQuestionAnswer(answer)
+        // i have succesfully got the answer text now check the _data file to see what is the expected arguments
+
+        savePollAnswer(answer)
     }
 
     render () {
-        const { question, timestamp, author, optionOne, optionTwo, answered, isOneAnswered, isTwoAnswered } = this.props
-        const optionOneVotes = question.optionOne.votes.length
-        const optionTwoVotes = question.optionTwo.votes.length
+        const { poll, authorAvatar, timestamp, author, optionOne, optionTwo, answered, isOneAnswered, isTwoAnswered } = this.props
+        const optionOneVotes = poll.optionOne.votes.length
+        const optionTwoVotes = poll.optionTwo.votes.length
         const optionOnePercentage = (optionOneVotes / (optionOneVotes + optionTwoVotes) * 100).toFixed(2)
         const optionTwoPercentage = (optionTwoVotes / (optionOneVotes + optionTwoVotes) * 100).toFixed(2)
         return (
             <Fragment>
                 <MenuBar />
-                <div className='form margin question-details-form'>
+                <div className='form margin poll-details-form'>
                     <div className='form-header'>
                         <p className='form-title'>Would You Rather</p>
                     </div>
@@ -43,11 +45,13 @@ class QuestionDetails extends Component {
                         ? (
                             <div className='form-body no-bottom-round'>
                             <ul className='no-padding no-margin'>
+                                
                                 <li className='fix-answered-li full-width'>
                                     <span className={isOneAnswered ? 'answered' : ''}>{optionOne}</span>
                                     {isOneAnswered ? <FaCheck className='padding-left answered'/> : null}
                                     <span className='vote-result'>{`${optionOneVotes} vote(s) | ${optionOnePercentage}%`}</span>
                                 </li>
+
                                 <li className='no-padding fix-answered-li full-width'>
                                     <div className='or-seperator'>
                                         <hr/>
@@ -95,6 +99,10 @@ class QuestionDetails extends Component {
                     <div className='user-details'>
                             <ul className='user-detail-ul nav nav-account block'>
                                 <li className='user-info-li inline-block'>
+                                    <img 
+                                        src={authorAvatar}
+                                        alt={`Avatar of ${author}`}
+                                        className='scale-down-mid profile-pic vertical-align'/>
                                     <span className="padding-left">{author}</span>
                                 </li>
                                 <li className='time-stamp user-info-li block'>
@@ -108,18 +116,20 @@ class QuestionDetails extends Component {
     }
 }
 
-function mapStateToProps ({authedUser, questions, users}, props) {
+function mapStateToProps ({authedUser, polls, users}, props) {
     const { question_id } = props.match.params
-    const question = questions[question_id]
-    const author = users[question.author].id
-    const timestamp = formatDate (question.timestamp)
-    const optionOne = question.optionOne.text
-    const optionTwo = question.optionTwo.text
-    const isOneAnswered = question.optionOne.votes.includes(authedUser)
-    const isTwoAnswered = question.optionTwo.votes.includes(authedUser)
+    const poll = polls[question_id]
+    const authorAvatar = users[poll.author].avatarURL
+    const author = users[poll.author].id
+    const timestamp = formatDate (poll.timestamp)
+    const optionOne = poll.optionOne.text
+    const optionTwo = poll.optionTwo.text
+    const isOneAnswered = poll.optionOne.votes.includes(authedUser)
+    const isTwoAnswered = poll.optionTwo.votes.includes(authedUser)
     const answered = isOneAnswered || isTwoAnswered
 
     return {
+        authorAvatar,
         author,
         timestamp,
         optionOne,
@@ -127,9 +137,9 @@ function mapStateToProps ({authedUser, questions, users}, props) {
         answered,
         isOneAnswered,
         isTwoAnswered,
-        question,
+        poll,
         users,
-        questions,
+        polls,
         authedUser,
         question_id,
     }
@@ -138,10 +148,10 @@ function mapStateToProps ({authedUser, questions, users}, props) {
 function mapDispatchToProps (dispatch, props) {
     const { question_id } = props.match.params
     return {
-        saveQuestionAnswer : (answer) => {
-            dispatch(handleSaveQuestionAnswer(question_id, answer))
+        savePollAnswer : (answer) => {
+            dispatch(handleSavePollAnswer(question_id, answer))
         }
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(QuestionDetails)
+export default connect(mapStateToProps, mapDispatchToProps)(PollDetails)
