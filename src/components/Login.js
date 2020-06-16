@@ -28,7 +28,7 @@ class Login extends Component {
             <Fragment>
                 <div className='signin-form'>
                     <div className='form-header'>
-                        <p className='form-title'>Would You Rather - login</p>
+                        <p className='starter-title'>Would You Rather - login</p>
                     </div>
                     <div className='form-body'>
                         <form onSubmit={this.handleLogin}>
@@ -43,7 +43,7 @@ class Login extends Component {
                                 <select 
                                     className='login-user-select' 
                                     onChange={(e) => this.onSelectUser(e.target.value)}>
-                                    <option value=""> Select User</option>
+                                    <option value=""> Press to Select </option>
                                     {
                                         Object.keys(users).map(user => 
                                             <option className='test' key={user} value={user}>

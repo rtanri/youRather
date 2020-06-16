@@ -36,39 +36,37 @@ class PollDetails extends Component {
         return (
             <Fragment>
                 <MenuBar />
-                <div className='form margin poll-details-form'>
+                <div className='margin poll-details-form'>
                     <div className='form-header'>
                         <p className='form-title'>Would You Rather</p>
                     </div>
                     {
                         answered
                         ? (
-                            <div className='form-body no-bottom-round'>
+                            <div className='form-body'>
                             <ul className='no-padding no-margin'>
                                 
                                 <li className='fix-answered-li full-width'>
                                     <span className={isOneAnswered ? 'answered' : ''}>{optionOne}</span>
-                                    {/* {isOneAnswered ? <FaCheck className='padding-left answered'/> : null} */}
+                                    {isOneAnswered ? <span className='padding-left answered'> - - is your Answer!</span> : null}
                                     <span className='vote-result'>{`${optionOneVotes} vote(s) | ${optionOnePercentage}%`}</span>
                                 </li>
 
                                 <li className='no-padding fix-answered-li full-width'>
                                     <div className='or-seperator'>
-                                        <hr/>
                                         <p className='inline-p'>OR</p>
-                                        <hr/>
                                     </div>
                                 </li>
                                 <li className='padding-bottom fix-answered-li full-width'>
                                     <span className={isTwoAnswered ? 'answered' : ''}>{optionTwo}</span>
-                                    {/* {isTwoAnswered ? <FaCheck className='padding-left answered'/> : null} */}
+                                    {isTwoAnswered ? <span className='padding-left answered'> - - is your Answer!</span> : null} 
                                     <span className='vote-result'>{`${optionTwoVotes} vote(s) | ${optionTwoPercentage}%`}</span>
                                 </li>
                             </ul>
                             </div>
                         )
                         : (
-                            <form onSubmit={this.submitAnswer} className='form-body no-bottom-round'>
+                            <form onSubmit={this.submitAnswer} className='form-body'>
                                 <div className='radio_container-div'>
                                     <label className='radio_container'>
                                         <span className='input_radio'>{optionOne}</span>
@@ -81,7 +79,7 @@ class PollDetails extends Component {
                                         <span className='checkmark'></span>
                                     </label>
 
-                                    <label className='radio_container'>
+                                    <label className='radio_container margin-bottom'>
                                         <span className='input_radio'>{optionTwo}</span>
                                         <input 
                                             className='hide' 
@@ -96,6 +94,7 @@ class PollDetails extends Component {
                             </form>
                         ) 
                     }
+                    <hr/>
                     <div className='user-details'>
                             <ul className='user-detail-ul nav nav-account block'>
                                 <li className='user-info-li inline-block'>
@@ -104,10 +103,11 @@ class PollDetails extends Component {
                                         alt={`Avatar of ${author}`}
                                         className='medium profile-pic vertical-align'/>
                                     <span className="padding-left">{author}</span>
+                                    <span className="padding-left time-stamp user-info-li">{timestamp}</span>
                                 </li>
-                                <li className='time-stamp user-info-li block'>
+                                {/* <li className='time-stamp user-info-li block'>
                                     { timestamp }
-                                </li>
+                                </li> */}
                             </ul>
                     </div>
                 </div>

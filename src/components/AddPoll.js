@@ -44,7 +44,7 @@ class AddPoll extends Component {
                 <MenuBar />
                 <div className='form margin poll-details-form'>
                     <div className='form-header'>
-                        <p className='form-title'>Would You Rather</p>
+                        <p className='form-title'>Enter Two New Options:</p>
                     </div>
                 {
                     <form onSubmit={this.handleSubmit} id='addPoll-form' className='form-body'>
@@ -59,7 +59,7 @@ class AddPoll extends Component {
                                 />
 
                             <textarea  
-                                className='block input-text' 
+                                className='block input-text margin-bottom' 
                                 name="optionTwo"
                                 placeholder='Option Two'
                                 required
