@@ -28,7 +28,7 @@ class Leaderboard extends Component {
                                             <img 
                                                 src={users[user.uid].avatarURL} 
                                                 alt={`Avatar for ${users[user.uid].name}`}
-                                                className='profile-pic scale-down-mid'/>
+                                                className='profile-pic medium'/>
                                         </li>
                                         <li className='nav-li user-name'>{users[user.uid].name}</li>
                                     </ul>

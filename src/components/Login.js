@@ -26,7 +26,7 @@ class Login extends Component {
 
         return (
             <Fragment>
-                <div className='form signin-form'>
+                <div className='signin-form'>
                     <div className='form-header'>
                         <p className='form-title'>Would You Rather - login</p>
                     </div>

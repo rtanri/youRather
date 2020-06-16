@@ -21,9 +21,7 @@ class Poll extends Component {
             <div className='form-body'>
                 <p className='optionOne'>{optionOne.text}</p>
                 <div className='or-seperator'>
-                    <hr/>
                     <p className='inline-p'>OR</p>
-                    <hr/>
                 </div>
                 <p className='optionTwo'>{optionTwo.text}</p>
             </div>

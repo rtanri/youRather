@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import MenuBar from './MenuBar'
 import { formatDate } from '../utils/helpers'
-import FaCheck from 'react-icons/lib/fa/check'
+// import FaCheck from 'react-icons/lib/fa/check'
 import { handleSavePollAnswer } from '../actions/shared'
 
 class PollDetails extends Component {
@@ -48,7 +48,7 @@ class PollDetails extends Component {
                                 
                                 <li className='fix-answered-li full-width'>
                                     <span className={isOneAnswered ? 'answered' : ''}>{optionOne}</span>
-                                    {isOneAnswered ? <FaCheck className='padding-left answered'/> : null}
+                                    {/* {isOneAnswered ? <FaCheck className='padding-left answered'/> : null} */}
                                     <span className='vote-result'>{`${optionOneVotes} vote(s) | ${optionOnePercentage}%`}</span>
                                 </li>
 
@@ -61,7 +61,7 @@ class PollDetails extends Component {
                                 </li>
                                 <li className='padding-bottom fix-answered-li full-width'>
                                     <span className={isTwoAnswered ? 'answered' : ''}>{optionTwo}</span>
-                                    {isTwoAnswered ? <FaCheck className='padding-left answered'/> : null}
+                                    {/* {isTwoAnswered ? <FaCheck className='padding-left answered'/> : null} */}
                                     <span className='vote-result'>{`${optionTwoVotes} vote(s) | ${optionTwoPercentage}%`}</span>
                                 </li>
                             </ul>
@@ -102,7 +102,7 @@ class PollDetails extends Component {
                                     <img 
                                         src={authorAvatar}
                                         alt={`Avatar of ${author}`}
-                                        className='scale-down-mid profile-pic vertical-align'/>
+                                        className='medium profile-pic vertical-align'/>
                                     <span className="padding-left">{author}</span>
                                 </li>
                                 <li className='time-stamp user-info-li block'>

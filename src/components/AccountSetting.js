@@ -22,7 +22,7 @@ class AccountSetting extends Component {
                         <img 
                                     src={avatar}
                                     alt={`Avatar of ${avatar}`}
-                                    className='profile-pic scale-down'/>
+                                    className='profile-pic mini'/>
                     </li>
                     <li className='padding-zero user-name nav-li'>
                         {authedUser}

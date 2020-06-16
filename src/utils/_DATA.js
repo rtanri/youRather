@@ -24,7 +24,7 @@ let users = {
   johndoe: {
     id: 'johndoe',
     name: 'John Doe',
-    avatarURL: "http://www.masscue.org/wp-content/uploads/2017/03/male-no-image.jpg",
+    avatarURL: "https://media.gq.com/photos/5c099f1b03f7892f75422ed8/master/w_1600%2Cc_limit/Grooming-Lessons-from-Maluma-Define-Part-2-GQ.jpg",
     answers: {
       "xj352vofupe1dqz9emx13r": 'optionOne',
       "vthrdm985a262al8qx3do": 'optionTwo',
