@@ -66,7 +66,7 @@ class PollDetails extends Component {
                             </div>
                         )
                         : (
-                            <form onSubmit={this.submitAnswer} className='form-body'>
+                            <form className='form-body' onSubmit={this.submitAnswer} >
                                 <div className='radio_container-div'>
                                     <label className='radio_container'>
                                         <span className='input_radio'>{optionOne}</span>
@@ -78,7 +78,7 @@ class PollDetails extends Component {
                                             onClick={this.selectRadio}/>
                                         <span className='checkmark'></span>
                                     </label>
-
+                                    <p className='or-seperator'>OR</p>
                                     <label className='radio_container margin-bottom'>
                                         <span className='input_radio'>{optionTwo}</span>
                                         <input 

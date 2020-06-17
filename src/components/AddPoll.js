@@ -33,11 +33,14 @@ class AddPoll extends Component {
     }
 
     render () {
-        const { toHome } = this.state
+        const { text, optionOne, optionTwo, toHome } = this.state
 
         if (toHome === true) {
             return <Redirect to='/' />
         }
+
+        const wordLeft1 = 50 - optionOne.length
+        const wordLeft2 = 50 - optionTwo.length
 
         return (
             <Fragment>
@@ -45,6 +48,7 @@ class AddPoll extends Component {
                 <div className='form margin poll-details-form'>
                     <div className='form-header'>
                         <p className='form-title'>Enter Two New Options:</p>
+                        <p className='form-subtitle'>With less than 50-characters</p>
                     </div>
                 {
                     <form onSubmit={this.handleSubmit} id='addPoll-form' className='form-body'>
@@ -52,20 +56,34 @@ class AddPoll extends Component {
                             <textarea  
                                 className='block input-text' 
                                 name="optionOne" 
-                                placeholder='Option One'
+                                placeholder="What's the 1st option?"
+                                value={text}
                                 required
                                 spellCheck="false"
                                 onChange={this.handleOptionOne}
+                                maxLength={100}
                                 />
+                                {wordLeft1 <= 30 && (
+                                    <div className='word-length-option1'>
+                                        {wordLeft1}
+                                    </div>
+                                )}
 
                             <textarea  
                                 className='block input-text margin-bottom' 
                                 name="optionTwo"
-                                placeholder='Option Two'
+                                value={text}
+                                placeholder="What's the 2nd option?"
                                 required
                                 spellCheck="false"
                                 onChange={this.handleOptionTwo}
+                                maxLength={100}
                                 />
+                                {wordLeft2 <= 30 && (
+                                    <div className='word-length-option2'>
+                                        {wordLeft2}
+                                    </div>
+                                )}
                         </div>
 
                         <button className='button'>Submit</button>

@@ -60,7 +60,16 @@ code {
   font-size: 2em;
   font-weight: bold;
   margin: 20px;
+  margin-bottom:0px;
 }
+
+.form-subtitle{
+  font-size: 12px;
+  color: rgb(46, 46, 46);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
 
 .form-body{
   text-align: center;
@@ -365,33 +374,33 @@ tr, th {
 .radio_container {
   display: block;
   position: relative;
-  padding-left: 15px;
+  padding-left: 10px;
   cursor: pointer;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  color: #9e9d9e;
   font-size: 15px;
-  margin-top: 40px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .checkmark {
   position: absolute;
   top: 2px;
-  left: 0;
+  left: 40px;
   height: 12px;
   width: 12px;
-  border: 1px solid #9e9d9e;
+  border: 1px solid;
   border-radius: 50%;
 }
 
 .radio_container:hover input ~ .checkmark {
-  border: 1px solid #cccccb;
+  border: 1px solid rgb(114, 114, 114);
 }
 
 .radio_container:hover {
-color: #cccccb;
+color: rgb(114, 114, 114);
 }
 
 .radio_container input:checked ~ .checkmark {
@@ -455,4 +464,22 @@ color: #cccccb;
 
 .margin-bottom {
   margin-bottom: 50px;
+}
+
+.word-length-option1 {
+  text-align: right;
+  font-size: 15px;
+  color: #C3392A;
+  position: relative;
+  bottom: 40px;
+  right: 15px;
+}
+
+.word-length-option2 {
+  text-align: right;
+  font-size: 15px;
+  color: #C3392A;
+  position: relative;
+  bottom: 70px;
+  right: 15px;
 }
