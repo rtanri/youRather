@@ -54,6 +54,10 @@ code {
   background-color: #ffd8a6;
 }
 
+.center {
+  text-align: center;
+}
+
 .form-title {
   text-align: center;
   /* padding: 5px; */

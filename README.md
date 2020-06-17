@@ -1,4 +1,4 @@
-# Would You Rather Project
+# Would-You-Rather Project
 
 This is the starter code for the final assessment project for Udacity's React & Redux course.
 
@@ -12,7 +12,7 @@ You can clone or download into your local computer, after that:
 
 * run $npm install,
 * run $npm start,
-* Select the user to proceed Homepage,
+* Select the user to proceed to Dashboard page,
 * There will be few questions under 'Unanswered' and 'Answered' category.
 
 
