@@ -27,35 +27,33 @@ class Login extends Component {
         return (
             <Fragment>
                 <div className='signin-form'>
-                    <div className='form-header'>
-                        <p className='starter-title'>Would You Rather - login</p>
-                    </div>
-                    <div className='form-body'>
-                        <form onSubmit={this.handleLogin}>
-                            <label className='sigin-body-p'>Select a user: </label>
-                            <div className='signin-body-form'>
-                                <img 
-                                    src={selectedUser === '' 
-                                    ? '/images/welcome.png'
-                                    : users[selectedUser].avatarURL}
-                                    alt={users[selectedUser]}
-                                    className='profile-pic'/> 
-                                <select 
-                                    className='login-user-select' 
-                                    onChange={(e) => this.onSelectUser(e.target.value)}>
-                                    <option value=""> Press to Select </option>
-                                    {
-                                        Object.keys(users).map(user => 
-                                            <option className='test' key={user} value={user}>
-                                                {user}
-                                            </option>)
-                                    }
-                                </select>                        
-                            </div>
+                    <img 
+                        src={selectedUser === '' 
+                        ? '/images/welcome.png'
+                        : users[selectedUser].avatarURL}
+                        alt={users[selectedUser]}
+                        className='profile-pic'/> 
+                <label className='signin'>Select a user: </label>
+                    <form onSubmit={this.handleLogin} >
 
-                            <button className='button'>SIGN IN</button>
-                        </form>
-                    </div>
+                        <div className='signin-body-form'>
+                            
+                            <select 
+                                className='login-user-select' 
+                                onChange={(e) => this.onSelectUser(e.target.value)}>
+                                <option value=""> Press to Select </option>
+                                {
+                                    Object.keys(users).map(user => 
+                                        <option className='test' key={user} value={user}>
+                                            {user}
+                                        </option>)
+                                }
+                            </select>  
+                        </div>
+                        <button className='button signin-button'>SIGN IN</button>
+                      
+                    </form>
+
                 </div>
             </Fragment>
 

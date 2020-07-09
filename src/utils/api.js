@@ -1,5 +1,6 @@
 import {
     _getUsers,
+    _getUser,
     _getQuestions,
     _saveQuestion,
     _saveQuestionAnswer,
@@ -10,6 +11,10 @@ export function getInitialUsers() {
         .then(users => ({
            users 
         }))
+}
+
+export function getUser(id){
+    return _getUser(id)
 }
 
 export function getInitialPolls() {

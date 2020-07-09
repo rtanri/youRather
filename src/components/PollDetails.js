@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
-import MenuBar from './MenuBar'
+import Nav from './Nav'
 import { formatDate } from '../utils/helpers'
 // import FaCheck from 'react-icons/lib/fa/check'
 import { handleSavePollAnswer } from '../actions/shared'
@@ -35,7 +35,7 @@ class PollDetails extends Component {
         const optionTwoPercentage = (optionTwoVotes / (optionOneVotes + optionTwoVotes) * 100).toFixed(2)
         return (
             <Fragment>
-                <MenuBar />
+                <Nav />
                 <div className='margin poll-details-form'>
                     <div className='form-header'>
                         <p className='form-title'>Would You Rather</p>

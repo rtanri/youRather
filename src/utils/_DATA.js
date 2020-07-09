@@ -24,7 +24,7 @@ let users = {
   johndoe: {
     id: 'johndoe',
     name: 'John Doe',
-    avatarURL: "https://media.gq.com/photos/5c099f1b03f7892f75422ed8/master/w_1600%2Cc_limit/Grooming-Lessons-from-Maluma-Define-Part-2-GQ.jpg",
+    avatarURL: "https://tylermcginnis.com/would-you-rather/dan.jpg",
     answers: {
       "xj352vofupe1dqz9emx13r": 'optionOne',
       "vthrdm985a262al8qx3do": 'optionTwo',
@@ -122,6 +122,12 @@ function generateUID () {
 export function _getUsers () {
   return new Promise((res, rej) => {
     setTimeout(() => res({...users}), 1000)
+  })
+}
+
+export function _getUser(id){
+  return new Promise((res, rej) => {
+    setTimeout(() => res(users[id]),1000)
   })
 }
 
