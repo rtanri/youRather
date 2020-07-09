@@ -47,7 +47,6 @@ class AddPoll extends Component {
                 <div className='form margin poll-details-form'>
                     <div className='form-header'>
                         <p className='form-title'>Enter Two New Options:</p>
-                        <p className='form-subtitle'>With less than 50-characters</p>
                     </div>
                 {
                     <form onSubmit={this.handleSubmit} id='addPoll-form' className='form-body'>
@@ -55,7 +54,7 @@ class AddPoll extends Component {
                             <textarea  
                                 className='block input-text' 
                                 name="optionOne" 
-                                placeholder="What's the 1st option?"
+                                placeholder="Enter your 1st option! (less than 50 characters)"
                                 value={text}
                                 required
                                 spellCheck="false"
@@ -72,7 +71,7 @@ class AddPoll extends Component {
                                 className='block input-text margin-bottom' 
                                 name="optionTwo"
                                 value={text}
-                                placeholder="What's the 2nd option?"
+                                placeholder="Enter your 2nd option! (less than 50 characters)"
                                 required
                                 spellCheck="false"
                                 onChange={this.handleOptionTwo}
@@ -85,7 +84,13 @@ class AddPoll extends Component {
                                 )}
                         </div>
 
-                        <button className='button'>Submit</button>
+                        <button 
+                            className='button' 
+                            disabled={optionOne === "" || optionTwo === "" || optionOne.length > 50 || optionTwo.length > 50}
+                        >
+                        Submit
+                        </button>
+                       
                     </form>
                 }
                 </div>
