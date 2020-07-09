@@ -21,17 +21,17 @@ class App extends Component {
     return (
       <Router>
         <Fragment>
-          <LoadingBar style={{ backgroundColor: '#25baa2'}}/>
+          <LoadingBar style={{ backgroundColor: '#ffb367'}}/>
           <Nav />
           <Switch>
             { 
               this.props.authedUser === null
-              ? <Route path='/' exact component={Login} />
+              ? <Route path='/' component={Login} />
               : <Fragment>
                   <Route path='/' exact component={Dashboard} />
                   <Route path='/questions/:question_id' component={PollDetails} />
-                  <Route path='/add' exact component={AddPoll} />
-                  <Route path='/leaderboard' exact component={Leaderboard} />
+                  <Route path='/add' component={AddPoll} />
+                  <Route path='/leaderboard' component={Leaderboard} />
                 </Fragment>
             }
             <Route component={PageNotFound} />

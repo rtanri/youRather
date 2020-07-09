@@ -103,9 +103,9 @@ class PollDetails extends Component {
                                     <span className="padding-left">{author}</span>
                                     <span className="padding-left time-stamp user-info-li">{timestamp}</span>
                                 </li>
-                                {/* <li className='time-stamp user-info-li block'>
+                                <li className='time-stamp user-info-li block'>
                                     { timestamp }
-                                </li> */}
+                                </li>
                             </ul>
                     </div>
                 </div>
