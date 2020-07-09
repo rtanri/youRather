@@ -6,54 +6,57 @@ import {NavLink} from 'react-router-dom'
 class Nav extends Component {
 
     handleLogout = () => {
-        const {setAuthedUser, history} = this.props
+        const {setAuthedUser, /*history*/} = this.props
         setAuthedUser(null)
-        history.push('/')
+        // history.push('/')
     }
 
     render () {
-        const {authedUser, avatar} = this.props
+    const {authedUser, /*avatar*/} = this.props
         return (
             <div>
-                <nav>
-                    <ul className='nav'>
-                        <li className="nav-li">
-                            <NavLink to='/' exact activeClassName='active'>
-                                Home
-                            </NavLink>
-                        </li>  
-                        <li>
-                            <NavLink to='/' exact activeClassName='active'>
-                                Leaderboard
-                            </NavLink>
-                        </li>  
-                        <li>
-                            <NavLink to='/' exact activeClassName='active'>
-                                Add Poll
-                            </NavLink>
-                        </li>  
+                <nav className="navbar-css">
                     { authedUser === null 
-                    ? null : 
-
-                        <ul className='nav nav-account'>
+                    ? <span className='login-title'>Would You Rather... 🤔</span> : 
+                        <ul className='nav'>
                             <li className="nav-li">
-                                {authedUser}
+                                <NavLink to='/' exact activeClassName='active'>
+                                    Home
+                                </NavLink>
+                            </li>  
+                            <li>
+                                <NavLink to='/leaderboard' exact activeClassName='active'>
+                                    Leaderboard
+                                </NavLink>
+                            </li>  
+                            <li>
+                                <NavLink to='/add' exact activeClassName='active'>
+                                    Add Poll
+                                </NavLink>
                             </li>  
 
-                            <li className='user-name nav-li'>
-                                <img 
-                                            src={avatar}
-                                            alt={`Avatar of ${avatar}`}
-                                            className='profile-pic mini'/>
-                            </li>
+                            <ul className='nav nav-account'>
+                                <li className="nav-li">
+                                    {authedUser}
+                                </li>  
 
-                            <li onClick={this.handleLogout} className='nav-li'>
-                                Logout
-                            </li>
-                        </ul> 
+                                <li className='user-name nav-li'>
+                                    {/* <img 
+                                                src={avatar}
+                                                alt={`Avatar of ${avatar}`}
+                                                className='profile-pic mini'/> */}
+                                </li>
+
+                                <li onClick={this.handleLogout} className='nav-li'>
+                                    <NavLink to='/' >
+                                    Logout
+                                    </NavLink>
+                                </li>
+                            </ul> 
+                        </ul>
                     }
 
-                    </ul>
+                    
                     
                 </nav>
             </div>
@@ -63,10 +66,10 @@ class Nav extends Component {
 
 
 function mapStateToProps({ authedUser, users }) {
-    const avatar = users[authedUser].avatarURL
+    // const avatar = users[authedUser].avatarURL
     return {
         authedUser,
-        avatar
+        // avatar
     }
 }
 

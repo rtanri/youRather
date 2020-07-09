@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import Poll from './Poll'
-import Nav from './Nav'
 import { handleInitialPolls } from '../actions/shared'
 
 class Dashboard extends Component {
@@ -17,7 +16,6 @@ class Dashboard extends Component {
         const { answeredPolls, unansweredPolls,loadingBar } = this.props
             return (
             <Fragment>
-                <Nav />
                 <ul className='divider'>
                     <li 
                         className={ this.state.selectedTab === 'unanswered' ? 'active' : 'li-hover'}

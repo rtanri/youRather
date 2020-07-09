@@ -1,13 +1,11 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
-import Nav from './Nav'
 
 class Leaderboard extends Component {
     render () {
         const { users, data } = this.props
         return (
             <Fragment>
-                <Nav />
                 <table className='table'>
                     <thead>
                         <tr>

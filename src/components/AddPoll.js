@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
-import Nav from './Nav'
 import { handleAddPoll } from '../actions/shared'
 import { Redirect } from 'react-router-dom'
 
@@ -44,7 +43,7 @@ class AddPoll extends Component {
 
         return (
             <Fragment>
-                <Nav />
+        
                 <div className='form margin poll-details-form'>
                     <div className='form-header'>
                         <p className='form-title'>Enter Two New Options:</p>

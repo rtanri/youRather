@@ -8,6 +8,7 @@ import PollDetails from './PollDetails'
 import LoadingBar from 'react-redux-loading'
 import AddPoll from './AddPoll'
 import Leaderboard from './Leaderboard'
+import Nav from './Nav'
 import PageNotFound from './PageNotFound'
 
 class App extends Component {
@@ -21,6 +22,7 @@ class App extends Component {
       <Router>
         <Fragment>
           <LoadingBar style={{ backgroundColor: '#25baa2'}}/>
+          <Nav />
           <Switch>
             { 
               this.props.authedUser === null

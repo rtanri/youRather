@@ -107,8 +107,7 @@ code {
   margin: 20px;
 }
 
-.menu-bar {
-  display: flex;
+.navbar-css {
   background-color: #ffb367;
   margin: 0;
   border-bottom: 1px solid grey;
@@ -199,6 +198,12 @@ code {
   font-size: 14px;
   position: relative;
   bottom:50px;
+}
+
+.login-title{
+  font-weight: 700;
+  font-size: 26px;
+  margin-left:20px;
 }
 
 .profile-pic {
