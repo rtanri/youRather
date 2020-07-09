@@ -10,10 +10,24 @@ Using the [Create React App](https://github.com/facebook/create-react-app) to bo
 
 You can clone or download into your local computer, after that:
 
-* run $npm install,
-* run $npm start,
+* run with npm: $npm install && npm start, or
+* run with yarn: $yarn install && yarn start,
+
+## How to Play:
 * Select the user to proceed to Dashboard page,
+<div align="center">
+    <img src="/public/images/login.png" width="400px"</img> 
+</div>
+
 * There will be few questions under 'Unanswered' and 'Answered' category.
+<div align="center">
+    <img src="/public/images/dashboard.png" width="400px"</img> 
+</div>
+
+* You can select the answers in the card,
+* You can also add new question in the "Add Poll" tab,
+* Don't forget to check who has the highest score in "Leaderboard" tab
+
 
 
 ## Contributing

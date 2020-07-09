@@ -6,18 +6,18 @@ import {NavLink} from 'react-router-dom'
 class Nav extends Component {
 
     handleLogout = () => {
-        const {setAuthedUser, /*history*/} = this.props
+        const {setAuthedUser} = this.props
         setAuthedUser(null)
-        // history.push('/')
+
     }
 
     render () {
-    const {authedUser, /*avatar*/} = this.props
+    const {authedUser} = this.props
         return (
             <div>
                 <nav className="navbar-css">
                     { authedUser === null 
-                    ? <span className='login-title'>Would You Rather... 🤔</span> : 
+                    ? <span className='login-title'>Would You Rather... </span> : 
                         <ul className='nav'>
                             <li className="nav-li">
                                 <NavLink to='/' exact activeClassName='active'>
@@ -40,13 +40,6 @@ class Nav extends Component {
                                     {authedUser}
                                 </li>  
 
-                                <li className='user-name nav-li'>
-                                    {/* <img 
-                                                src={avatar}
-                                                alt={`Avatar of ${avatar}`}
-                                                className='profile-pic mini'/> */}
-                                </li>
-
                                 <li onClick={this.handleLogout} className='nav-li'>
                                     <NavLink to='/' >
                                     Logout
@@ -65,11 +58,9 @@ class Nav extends Component {
 }
 
 
-function mapStateToProps({ authedUser, users }) {
-    // const avatar = users[authedUser].avatarURL
+function mapStateToProps({ authedUser}) {
     return {
         authedUser,
-        // avatar
     }
 }
 
