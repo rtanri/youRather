@@ -1,10 +1,19 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import { formatDate } from '../utils/helpers'
-// import FaCheck from 'react-icons/lib/fa/check'
 import { handleSavePollAnswer } from '../actions/shared'
+import {Redirect} from 'react-router-dom'
 
 class PollDetails extends Component {
+
+    //     // w. error handling if poll is empty, set a possibility for empty object/undefined/null
+    //    if ( this.props.poll === {} ){
+    //         // redirect to error page
+    //          or, window.location.href = /error
+    //    } 
+    // }
+
+
     state = {
         selectedOption: ''
     }
@@ -20,14 +29,27 @@ class PollDetails extends Component {
 
         const { savePollAnswer } = this.props
         const answer = this.state.selectedOption
-
-        // i have succesfully got the answer text now check the _data file to see what is the expected arguments
-
         savePollAnswer(answer)
     }
 
     render () {
-        const { poll, authorAvatar, timestamp, author, optionOne, optionTwo, answered, isOneAnswered, isTwoAnswered } = this.props
+        //with error handling before render block start a possibility of empty poll
+        if (!this.props.poll){
+            //with redirect to error page
+            return <Redirect to='/error' />
+        }
+
+        const { poll, users, authedUser } = this.props
+    //Add in the constant here
+        const authorAvatar = users[poll.author].avatarURL
+        const author = users[poll.author].id
+        const timestamp = formatDate (poll.timestamp)
+        const optionOne = poll.optionOne.text
+        const optionTwo = poll.optionTwo.text
+        const isOneAnswered = poll.optionOne.votes.includes(authedUser)
+        const isTwoAnswered = poll.optionTwo.votes.includes(authedUser)
+        const answered = isOneAnswered || isTwoAnswered
+
         const optionOneVotes = poll.optionOne.votes.length
         const optionTwoVotes = poll.optionTwo.votes.length
         const optionOnePercentage = (optionOneVotes / (optionOneVotes + optionTwoVotes) * 100).toFixed(2)
@@ -117,29 +139,32 @@ class PollDetails extends Component {
 function mapStateToProps ({authedUser, polls, users}, props) {
     const { question_id } = props.match.params
     const poll = polls[question_id]
-    const authorAvatar = users[poll.author].avatarURL
-    const author = users[poll.author].id
-    const timestamp = formatDate (poll.timestamp)
-    const optionOne = poll.optionOne.text
-    const optionTwo = poll.optionTwo.text
-    const isOneAnswered = poll.optionOne.votes.includes(authedUser)
-    const isTwoAnswered = poll.optionTwo.votes.includes(authedUser)
-    const answered = isOneAnswered || isTwoAnswered
+    //debugger
+    //TRANSFER: all the const with poll within to render() since we need to handle error of: poll={}
+
+    // const authorAvatar = users[poll.author].avatarURL
+    // const author = users[poll.author].id
+    // const timestamp = formatDate (poll.timestamp)
+    // const optionOne = poll.optionOne.text
+    // const optionTwo = poll.optionTwo.text
+    // const isOneAnswered = poll.optionOne.votes.includes(authedUser)
+    // const isTwoAnswered = poll.optionTwo.votes.includes(authedUser)
+    // const answered = isOneAnswered || isTwoAnswered
 
     return {
-        authorAvatar,
-        author,
-        timestamp,
-        optionOne,
-        optionTwo,
-        answered,
-        isOneAnswered,
-        isTwoAnswered,
         poll,
         users,
-        polls,
         authedUser,
-        question_id,
+        // authorAvatar,
+        // author,
+        // timestamp,
+        // optionOne,
+        // optionTwo,
+        // answered,
+        // isOneAnswered,
+        // isTwoAnswered,
+        // polls,
+        // question_id,
     }
 }
 

@@ -17,7 +17,7 @@ class App extends Component {
   componentWillMount() {
     const AUTHED_ID = null;
     this.props.dispatch((handleInitialUsers(AUTHED_ID)))
-    this.props.dispatch((handleInitialPolls)) 
+    this.props.dispatch((handleInitialPolls())) 
   }
 
   render() {
