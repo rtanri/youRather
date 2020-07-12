@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Login from '../components/Login'
 import { connect } from 'react-redux'
-import { handleInitialUsers } from '../actions/shared'
+import { handleInitialUsers, handleInitialPolls } from '../actions/shared'
 import Dashboard from './Dashboard'
 import PollDetails from './PollDetails'
 import LoadingBar from 'react-redux-loading'
@@ -12,9 +12,12 @@ import Nav from './Nav'
 import PageNotFound from './PageNotFound'
 
 class App extends Component {
-  componentDidMount() {
+
+  //Add the handleInitialPolls as well in componentWillMount() to set the data before anyone signed-in
+  componentWillMount() {
     const AUTHED_ID = null;
     this.props.dispatch((handleInitialUsers(AUTHED_ID)))
+    this.props.dispatch((handleInitialPolls)) 
   }
 
   render() {
@@ -27,14 +30,18 @@ class App extends Component {
             { 
               this.props.authedUser === null
               ? <Route path='/' component={Login} />
-              : <Fragment>
+              : 
+              //error handling path="/error" -  - Set the right route for undefined /:question_id 
+              //debugger
+                <Fragment>
                   <Route path='/' exact component={Dashboard} />
                   <Route path='/questions/:question_id' component={PollDetails} />
                   <Route path='/add' component={AddPoll} />
                   <Route path='/leaderboard' component={Leaderboard} />
+                  <Route path='/error' component={PageNotFound} />
                 </Fragment>
             }
-            <Route component={PageNotFound} />
+
           </Switch>
         </Fragment>
       </Router>
