@@ -17,7 +17,7 @@ class Nav extends Component {
             <div>
                 <nav className="navbar-css">
                     { authedUser === null 
-                    ? <span className='login-title'>Would You Rather... </span> : 
+                    ? <span className='login-title'>Would You Rather... with continuous integration Netlify & Github </span> : 
                         <ul className='nav'>
                             <li className="nav-li">
                                 <NavLink to='/' exact activeClassName='active'>
