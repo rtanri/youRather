@@ -21,6 +21,28 @@ code {
     monospace;
 }
 
+/* div.ui.segment{
+  padding: auto 100px;
+} */
+
+.ui.placeholder.segment .button{
+  margin: 20px auto;
+}
+
+.button-list{
+  padding-left: 20%;
+  padding-right: 20%;
+  display: flex;
+  flex-direction:row;
+  justify-content: space-evenly;
+}
+
+div.ui.segment.piledSegment{
+  margin-right: 100px;
+  margin-left: 100px;
+}
+
+
 .page-title {
   text-align: center;
   padding-top: 5px;
