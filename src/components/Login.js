@@ -1,78 +1,19 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { setAuthedUser } from '../actions/authedUser'
+import {
+    Segment, Image, Form
+} from 'semantic-ui-react'
 
-class Login extends Component {
-    state = {
-        selectedUser: ''
-    }
-
-    handleLogin = (e) => {
-        e.preventDefault()
-        const { selectedUser } = this.state
-        const { setAuthedUser } = this.props
-
-        if (selectedUser) {
-            setAuthedUser(selectedUser)
-        } else alert('Select a user!')
-
-    }
-
-    onSelectUser = (selectedUser) => this.setState({ selectedUser })
-
-    render () {
-        const { users } = this.props
-        const { selectedUser } = this.state
-
+class Login extends Component{
+    render(){
         return (
-            <Fragment>
-                <div className='signin-form'>
-                    <img 
-                        src={selectedUser === '' 
-                        ? '/images/welcome.png'
-                        : users[selectedUser].avatarURL}
-                        alt={users[selectedUser]}
-                        className='profile-pic'/> 
-                <label className='signin'>Select a user: </label>
-                    <form onSubmit={this.handleLogin} >
-
-                        <div className='signin-body-form'>
-                            
-                            <select 
-                                className='login-user-select' 
-                                onChange={(e) => this.onSelectUser(e.target.value)}>
-                                <option value=""> Press to Select </option>
-                                {
-                                    Object.keys(users).map(user => 
-                                        <option className='test' key={user} value={user}>
-                                            {user}
-                                        </option>)
-                                }
-                            </select>  
-                        </div>
-                        <button className='button signin-button'>SIGN IN</button>
-                      
-                    </form>
-
-                </div>
-            </Fragment>
-
+            <Segment>
+                <a href="www.google.com">Test Login Page</a>
+            </Segment>
         )
     }
 }
 
-function mapStateToProps ({ users }) {
-    return {
-        users
-    }
-}
+export default Login;
 
-function mapDispatchToProps(dispatch) {
-    return {
-        setAuthedUser: (id) => {
-            dispatch(setAuthedUser(id))
-        }
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Login)
