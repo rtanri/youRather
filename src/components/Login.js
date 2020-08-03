@@ -33,7 +33,7 @@ class Login extends Component {
                         : users[selectedUser].avatarURL}
                         alt={users[selectedUser]}
                         className='profile-pic'/> 
-                <label className='signin'>Select user login: </label>
+                <label className='signin'>Select a user: </label>
                     <form onSubmit={this.handleLogin} >
 
                         <div className='signin-body-form'>
