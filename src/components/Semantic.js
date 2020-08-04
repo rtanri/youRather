@@ -7,14 +7,16 @@ import {
     Header,
     Icon,
     Container,
+    List,
+    Image,
 } from 'semantic-ui-react'
 
 class Semantic extends Component{
     render(){
         const sizes = ['tiny', 'big']
         return (
-        <div>
-            <Segment raised>
+        <div class="contentMargin">
+            <Segment raised inverted color="gray">
                 <Header as="h2" textAlign='center' margin-bottom='100px'>Semantic UI: Segment Group & Button</Header>
             </Segment>
                 
@@ -23,7 +25,7 @@ class Semantic extends Component{
                     <Header icon>
                         <Icon name='pdf file outline' />
                         No documents are listed for this customer.
-                        <div class="button-list">
+                        <div class="flex-even">
                             <Button color="brown">Add Document</Button>
                             <Button primary>Compress Document</Button>
                             <Button secondary>Delete File</Button>
@@ -33,7 +35,7 @@ class Semantic extends Component{
             </Container>
 
             <Segment>
-                <div class="button-list">
+                <div class="flex-even">
                     <Button 
                         content = 'Like'
                         icon = 'heart'
@@ -71,12 +73,145 @@ class Semantic extends Component{
             </div>
             <br/>
             
-            <Segment raised>
+            <Segment raised inverted color='gray'>
                 <Header as="h2" textAlign='center' margin-bottom='100px'>Semantic UI: List and Modal</Header>
             </Segment>
+
+            <Header textAlign='center'>Examples of Lists with Icons, Images, others</Header>
+            <div class='flex-even'>
+                <Segment floated = 'left' > 
+                    <strong>List with Shorthands</strong>
+                    <List
+                        items = {[
+                            'Apples',
+                            'Pears',
+                            'Orange',
+                            'Grapes',
+                            'Pinapple'
+                        ]}
+                        // to seperate with line and bigger space
+                        divided relaxed
+                    />
+                </Segment>
+
+
+                
+                <Segment floated = 'left'>
+                    <strong>Normal List with Icon</strong>
+                    <List>
+                        <List.Item>
+                            <List.Icon name='volleyball ball' />
+                            <List.Content>Watermelon</List.Content> 
+                        </List.Item>
+                        <List.Item>
+                            <List.Icon name='rocket' />
+                            <List.Content>Plum</List.Content> 
+                        </List.Item>
+                        <List.Item>Banana</List.Item>
+                        <List.Item>Dragon Fruits</List.Item>
+                    </List>
+                </Segment>
+
+
+                <Segment floated = 'left'> 
+                    <strong>Shorthands with link and icon</strong>
+                    <List divided>
+                        <List.Item icon='users' content='Semantic UI' />
+                        <List.Item icon='compass' content='Singapore'/>
+                        <List.Item 
+                            icon ='mail'
+                            content= { <a href='mailto:revin@semantic-ui.com'>revin@semantic-ui.com</a> }
+                        />
+                        <List.Item 
+                            icon ='mail'
+                            content= { <a href='www.semantic-ui.com'>semantic-ui.com</a> }
+                        />
+                    </List>
+                </Segment>
+
+                <Segment floated='right'>
+                        <List divided relaxed >
+                            <List.Item>
+                                <List.Icon name='github' size='large' verticalAlign='middle'/>
+                                <List.Content>
+                                    <List.Header>Semantic/youRather </List.Header>
+                                    <List.Description>Updated 10mins ago</List.Description>
+                                </List.Content>
+                            </List.Item>
+
+                            <List.Item>
+                                
+                                <List.Icon name='google drive' size='large' verticalAlign='middle'/>
+                                <List.Content>
+                                    <List.Header>G-drive/revintanri</List.Header>
+                                    <List.Description>Updated 22mins ago</List.Description>
+                                </List.Content>
+                            </List.Item>
+
+                            <List.Item>
+                                <Image avatar src='https://react.semantic-ui.com/images/avatar/small/matthew.png'/>
+                                <List.Content>
+                                    <List.Header as='a'>Library/PracticeUI</List.Header>
+                                    <List.Description as='a'>Updated 34 mins ago</List.Description>
+                                </List.Content>
+                            </List.Item>
+                        </List>
+                </Segment>
+
+                <Segment floated='right'>
+                <List ordered>
+                    <List.Item as='a'>Getting Started</List.Item>
+                    <List.Item as='a'>Introduction</List.Item>
+                    <List.Item>
+                        Languages
+                        <List.List as='ol'>
+                            <List.Item as='li'>
+                               <a href='#'>HTML</a>
+                            </List.Item>
+                            <List.Item as='li'>Javascript</List.Item>
+                            <List.Item as='li'>CSS</List.Item>
+                        </List.List>
+                    </List.Item>
+                    <List.Item>
+                        Review
+                        <List.List as='ul'>
+                            <List.Item as='li'>
+                                <a href='#'>Good</a>
+                            </List.Item>
+                            <List.Item as='li'>
+                                <a href='#'>Bad</a>
+                            </List.Item>
+                        </List.List>
+                    </List.Item>
+                </List>
+                </Segment>
+
+            </div>
+
+
+            <div>
+            <Header textAlign='center'>Typical Footer</Header>
+                <Segment>
+                    <List floated='right' horizontal>
+                        <List.Item disabled href='#'>
+                            © GitHub, Inc.
+                        </List.Item>
+                        <List.Item href='#'>Terms</List.Item>
+                        <List.Item href='#'>Privacy</List.Item>
+                        <List.Item href='#'>Contact</List.Item>
+                        </List>
+
+                        <List horizontal>
+                        <List.Item href='#'>About Us</List.Item>
+                        <List.Item href='#'>Jobs</List.Item>
+                    </List> 
+                </Segment>
+
+            </div>
+
+
     </div>
-        )
-    }
+    )}
 }
 
 export default Semantic;
