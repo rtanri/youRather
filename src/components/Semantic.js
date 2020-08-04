@@ -9,6 +9,7 @@ import {
     Container,
     List,
     Image,
+    Modal,
 } from 'semantic-ui-react'
 
 class Semantic extends Component{
@@ -17,9 +18,10 @@ class Semantic extends Component{
         return (
         <div class="contentMargin">
             <Segment raised inverted color="gray">
-                <Header as="h2" textAlign='center' margin-bottom='100px'>Semantic UI: Segment Group & Button</Header>
+                <Header as="h2" textAlign='center' margin-bottom='100px'>Semantic UI: Segment, Segment Group & Button</Header>
             </Segment>
                 
+            {/* Segment inside Container */}
             <Container>
                 <Segment placeholder>
                     <Header icon>
@@ -34,6 +36,7 @@ class Semantic extends Component{
                 </Segment>
             </Container>
 
+            {/* Button with Icons and Numbers */}
             <Segment>
                 <div class="flex-even">
                     <Button 
@@ -62,6 +65,7 @@ class Semantic extends Component{
                 </div>
             </Segment>
 
+            {/* Various Size of Segment: mini, tiny, big, large, massive, etc */}
             <div>
                 {sizes.map((size) => (
                     <Segment.Group key={size} size={size}>
@@ -74,7 +78,7 @@ class Semantic extends Component{
             <br/>
             
             <Segment raised inverted color='gray'>
-                <Header as="h2" textAlign='center' margin-bottom='100px'>Semantic UI: List and Modal</Header>
+                <Header as="h2" textAlign='center' margin-bottom='100px'>Semantic UI: List</Header>
             </Segment>
 
             <Header textAlign='center'>Examples of Lists with Icons, Images, others</Header>
@@ -189,7 +193,7 @@ class Semantic extends Component{
             </div>
 
 
-            <div>
+            <div class='mediumWidth'>
             <Header textAlign='center'>Typical Footer</Header>
                 <Segment>
                     <List floated='right' horizontal>
@@ -207,10 +211,60 @@ class Semantic extends Component{
                     </List> 
                 </Segment>
 
+                <Header textAlign='center'>List with Floating Button</Header>
+                <Segment>
+                <List divided verticalAlign='middle'>
+                    <List.Item>
+                    <List.Content floated='right'>
+                        <Button>Add</Button>
+                    </List.Content>
+                    <Image avatar src='https://react.semantic-ui.com/images/avatar/small/lena.png' />
+                    <List.Content>Lena</List.Content>
+                    </List.Item>
+                    <List.Item>
+                    <List.Content floated='right'>
+                        <Button>Add</Button>
+                    </List.Content>
+                    <Image avatar src='https://react.semantic-ui.com/images/avatar/small/lindsay.png' />
+                    <List.Content>Lindsay</List.Content>
+                    </List.Item>
+                    <List.Item>
+                    <List.Content floated='right'>
+                        <Button>Add</Button>
+                    </List.Content>
+                    <Image avatar src='https://react.semantic-ui.com/images/avatar/small/mark.png' />
+                    <List.Content>Mark</List.Content>
+                    </List.Item>
+                    <List.Item>
+                    <List.Content floated='right'>
+                        <Button>Add</Button>
+                    </List.Content>
+                    <Image avatar src='https://react.semantic-ui.com/images/avatar/small/molly.png' />
+                    <List.Content>Molly</List.Content>
+                    </List.Item>
+                </List>
+                </Segment>
             </div>
+            <div class="contentMargin">
+                <Segment raised inverted color='gray'>
+                    <Header as="h2" textAlign='center' margin-bottom='100px'>Semantic UI: Modal</Header>
+                </Segment>
 
-
+                <Header as ='h3' textAlign='center'>Normal Modal</Header>
+                
+                {/* Shorthanded Modal */}
+                <div>
+                    <Modal
+                        trigger={<Button>Show Modal</Button>}
+                        header='Reminder!'
+                        content='Call Benjamin regarding the reports.'
+                        actions={['Snooze', { key: 'done', content: 'Done', positive: true }]}
+                    />
+                </div>
+            </div>
     </div>
+
+
     )}
 }
 

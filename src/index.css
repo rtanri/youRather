@@ -35,6 +35,11 @@ code {
   margin-bottom: 300px;
 }
 
+.mediumWidth{
+  width: 600px;
+  margin: 50px auto;
+}
+
 .rightAbit{
   position: relative;
   left: 50px;
