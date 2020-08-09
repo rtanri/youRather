@@ -14,7 +14,7 @@ import {
     Feed,
 } from 'semantic-ui-react'
 
-class Semantic extends Component{
+class Semantic1 extends Component{
     render(){
         const sizes = ['tiny', 'big']
 
@@ -273,7 +273,7 @@ class Semantic extends Component{
             </div> <br/>
 
             {/* Card Examples */}
-            <div class="contentMargin">
+            <div>
 
                 <Segment raised inverted color='gray'>
                     <Header as="h2" textAlign='center' margin-bottom='100px'>Semantic UI: Card</Header>
@@ -386,10 +386,20 @@ class Semantic extends Component{
 
                 </div>
             </div>
+            <br />
+
+            {/* GRID layout examples */}
+            <div>
+                <Segment raised inverted color='gray'>
+                    <Header as="h2" textAlign='center' margin-bottom='100px'>Semantic UI: Grid</Header>
+                </Segment>
+
+
+            </div>
     </div>
 
     )}
 }
 
-export default Semantic;
+export default Semantic1;
 
