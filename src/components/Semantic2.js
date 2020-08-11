@@ -7,6 +7,9 @@ import {
     Grid,
     Header,
     Image,
+    Comment,
+    Form,
+    Button,
 
 } from 'semantic-ui-react'
 
@@ -91,36 +94,176 @@ class Semantic2 extends Component{
             
         {/* Grid Celled */}
         <Segment>
-            <Header textAlign='center'>Grid Celled Normal or Internally</Header>
+            <Header textAlign='center'>Grid Celled Normal or Internally with Column Width</Header>
             <Grid celled='internally'>
                 <Grid.Row>
-                <Grid.Column width={2}>
-                    <Image src='https://react.semantic-ui.com/images/wireframe/image.png' />
+                <Grid.Column width={4}>
+                    <Image src='images/wireframe/image.png' />
                 </Grid.Column>
-                <Grid.Column width={10}>
-                    <Image src='https://react.semantic-ui.com/images/wireframe/centered-paragraph.png' />
+                <Grid.Column width={8}>
+                    <Image src='images/wireframe/centered-paragraph.png' />
                 </Grid.Column>
                 <Grid.Column width={4}>
-                    <Image src='https://react.semantic-ui.com/images/wireframe/image.png' />
+                    <Image src='images/wireframe/media-paragraph.png' />
                 </Grid.Column>
                 </Grid.Row>
 
                 <Grid.Row>
                 <Grid.Column width={3}>
-                    <Image src='https://react.semantic-ui.com/images/wireframe/image.png' />
+                    <Image src='images/wireframe/image.png' />
                 </Grid.Column>
                 <Grid.Column width={10}>
-                    <Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
+                    <Image src='images/wireframe/paragraph.png' />
                 </Grid.Column>
                 <Grid.Column width={3}>
-                    <Image src='https://react.semantic-ui.com/images/wireframe/image.png' />
+                    <Image src='images/wireframe/image.png' />
                 </Grid.Column>
                 </Grid.Row>
             </Grid>
         </Segment>
+
+        {/* Grid with Stretch */}
+        <Segment>
+        <Header textAlign='center'>Grid Celled Normal or Internally with Column Width</Header>
+        <Grid columns={3} divided>
+            <Grid.Row stretched>
+                <Grid.Column>
+                    <Image src='images/wireframe/image.png' />
+                </Grid.Column>
+                <Grid.Column>
+                    <Segment>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt 
+                    </Segment>
+                    <Segment>
+                        <Image src='images/wireframe/paragraph.png' />
+                    </Segment>
+                </Grid.Column>
+                <Grid.Column>
+                    <Segment>1</Segment>
+                    <Segment>2</Segment>
+                    <Segment>3</Segment>
+                </Grid.Column>
+            </Grid.Row>
+        </Grid>
+        </Segment>
+
+
+        {/* Grid with responsive width */}
+        <Segment>
+        <Header textAlign='center'>Responsive Width: Doubling and Stackable</Header>
+        <Grid>
+      <Grid.Column mobile={16} tablet={8} computer={4}>
+        <Image src='/images/wireframe/paragraph.png' />
+      </Grid.Column>
+      <Grid.Column mobile={16} tablet={8} computer={4}>
+        <Image src='/images/wireframe/paragraph.png' />
+      </Grid.Column>
+      <Grid.Column mobile={16} tablet={8} computer={4}>
+        <Image src='/images/wireframe/paragraph.png' />
+      </Grid.Column>
+      <Grid.Column mobile={16} tablet={8} computer={4}>
+        <Image src='/images/wireframe/paragraph.png' />
+      </Grid.Column>
+      <Grid.Column mobile={16} tablet={8} computer={4}>
+        <Image src='/images/wireframe/paragraph.png' />
+      </Grid.Column>
+    </Grid>
+
+    <Grid>
+      <Grid.Column largeScreen={2} widescreen={1}>
+        <Image src='/images/wireframe/paragraph.png' />
+      </Grid.Column>
+      <Grid.Column largeScreen={2} widescreen={1}>
+        <Image src='/images/wireframe/paragraph.png' />
+      </Grid.Column>
+      <Grid.Column largeScreen={2} widescreen={1}>
+        <Image src='/images/wireframe/paragraph.png' />
+      </Grid.Column>
+      <Grid.Column largeScreen={2} widescreen={1}>
+        <Image src='/images/wireframe/paragraph.png' />
+      </Grid.Column>
+    </Grid>
+        </Segment>
+
+
+    <Segment>
+    <Header textAlign='center'>Comments with avatar, form and texts</Header>
+
+        <Comment.Group>
+    <Header as='h3' dividing>
+      Comments
+    </Header>
+
+    <Comment>
+      <Comment.Avatar src='https://react.semantic-ui.com/images/avatar/small/lena.png' />
+      <Comment.Content>
+        <Comment.Author as='a'>Matt</Comment.Author>
+        <Comment.Metadata>
+          <div>Today at 5:42PM</div>
+        </Comment.Metadata>
+        <Comment.Text>How artistic!</Comment.Text>
+        <Comment.Actions>
+          <Comment.Action>Reply</Comment.Action>
+        </Comment.Actions>
+      </Comment.Content>
+    </Comment>
+
+    <Comment>
+      <Comment.Avatar src='https://react.semantic-ui.com/images/avatar/small/lena.png' />
+      <Comment.Content>
+        <Comment.Author as='a'>Elliot Fu</Comment.Author>
+        <Comment.Metadata>
+          <div>Yesterday at 12:30AM</div>
+        </Comment.Metadata>
+        <Comment.Text>
+          <p>This has been very useful for my research. Thanks as well!</p>
+        </Comment.Text>
+        <Comment.Actions>
+          <Comment.Action>Reply</Comment.Action>
+        </Comment.Actions>
+      </Comment.Content>
+      <Comment.Group>
+        <Comment>
+          <Comment.Avatar src='https://react.semantic-ui.com/images/avatar/small/lena.png' />
+          <Comment.Content>
+            <Comment.Author as='a'>Jenny Hess</Comment.Author>
+            <Comment.Metadata>
+              <div>Just now</div>
+            </Comment.Metadata>
+            <Comment.Text>Elliot you are always so right :)</Comment.Text>
+            <Comment.Actions>
+              <Comment.Action>Reply</Comment.Action>
+            </Comment.Actions>
+          </Comment.Content>
+        </Comment>
+      </Comment.Group>
+    </Comment>
+
+    <Comment>
+      <Comment.Avatar src='https://react.semantic-ui.com/images/avatar/small/lena.png' />
+      <Comment.Content>
+        <Comment.Author as='a'>Joe Henderson</Comment.Author>
+        <Comment.Metadata>
+          <div>5 days ago</div>
+        </Comment.Metadata>
+        <Comment.Text>Dude, this is awesome. Thanks so much</Comment.Text>
+        <Comment.Actions>
+          <Comment.Action>Reply</Comment.Action>
+        </Comment.Actions>
+      </Comment.Content>
+    </Comment>
+
+    <Form reply>
+      <Form.TextArea />
+      <Button content='Add Reply' labelPosition='left' icon='edit' primary />
+    </Form>
+    
+  </Comment.Group>
+    </Segment>
     </div>
 
     )}
+
 }
 
 export default Semantic2;
