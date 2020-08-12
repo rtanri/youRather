@@ -12,6 +12,7 @@ import {
     Button,
     Reveal,
     Popup,
+    Tab,
 } from 'semantic-ui-react'
 
 class Semantic2 extends Component{
@@ -22,6 +23,12 @@ class Semantic2 extends Component{
               <Image src='/images/wireframe/image.png' />
             </Grid.Column>
           ))
+
+          const panes = [
+            { menuItem: 'Tab 1', render: () => <Tab.Pane>Tab 1 Content</Tab.Pane> },
+            { menuItem: 'Tab 2', render: () => <Tab.Pane>Tab 2 Content</Tab.Pane> },
+            { menuItem: 'Tab 3', render: () => <Tab.Pane>Tab 3 Content</Tab.Pane> },
+          ]
           
         return (
     <div class="contentMargin gridChild">
@@ -316,6 +323,15 @@ class Semantic2 extends Component{
                 content="Where can you find this missing girl?"
                 basic
             />
+    </Segment>
+
+    {/*Tabs */}
+    <Segment>
+            <Header textAlign='center'>Tabs with vertical and horizontal</Header>
+            <Tab menu={{ fluid: true, vertical: true, tabular: true }} panes={panes} />
+            <br />
+            <Tab panes={panes} />
+
     </Segment>
   
             
