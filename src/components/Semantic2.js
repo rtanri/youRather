@@ -10,7 +10,8 @@ import {
     Comment,
     Form,
     Button,
-
+    Reveal,
+    Popup,
 } from 'semantic-ui-react'
 
 class Semantic2 extends Component{
@@ -96,9 +97,17 @@ class Semantic2 extends Component{
         <Segment>
             <Header textAlign='center'>Grid Celled Normal or Internally with Column Width</Header>
             <Grid celled='internally'>
-                <Grid.Row>
+                <Grid.Row padded>
                 <Grid.Column width={4}>
-                    <Image src='images/wireframe/image.png' />
+                    <Reveal animated='rotate'>
+                        <Reveal.Content visible>
+                            <Image src='images/wireframe/image.png' />
+                        </Reveal.Content>
+                        <Reveal.Content hidden>
+                            <Image size = 'small' src='https://react.semantic-ui.com/images/avatar/small/molly.png' />
+                        </Reveal.Content>
+                    </Reveal>
+                    
                 </Grid.Column>
                 <Grid.Column width={8}>
                     <Image src='images/wireframe/centered-paragraph.png' />
@@ -128,7 +137,14 @@ class Semantic2 extends Component{
         <Grid columns={3} divided>
             <Grid.Row stretched>
                 <Grid.Column>
-                    <Image src='images/wireframe/image.png' />
+                    <Reveal animated='rotate'>
+                        <Reveal.Content visible>
+                            <Image src='images/wireframe/image.png' />
+                        </Reveal.Content>
+                        <Reveal.Content hidden>
+                            <Image src='https://react.semantic-ui.com/images/avatar/small/molly.png' />
+                        </Reveal.Content>
+                    </Reveal>
                 </Grid.Column>
                 <Grid.Column>
                     <Segment>
@@ -185,17 +201,16 @@ class Semantic2 extends Component{
     </Grid>
         </Segment>
 
-
-    <Segment>
-    <Header textAlign='center'>Comments with avatar, form and texts</Header>
-
-        <Comment.Group>
+        {/* Comments with Comment Form */}
+        <Segment>
+            <Header textAlign='center'>Responsive Width: Doubling and Stackable</Header>
+            <Comment.Group>
     <Header as='h3' dividing>
       Comments
     </Header>
 
     <Comment>
-      <Comment.Avatar src='https://react.semantic-ui.com/images/avatar/small/lena.png' />
+      <Comment.Avatar src='https://react.semantic-ui.com/images/avatar/small/molly.png' />
       <Comment.Content>
         <Comment.Author as='a'>Matt</Comment.Author>
         <Comment.Metadata>
@@ -209,7 +224,7 @@ class Semantic2 extends Component{
     </Comment>
 
     <Comment>
-      <Comment.Avatar src='https://react.semantic-ui.com/images/avatar/small/lena.png' />
+      <Comment.Avatar src='https://react.semantic-ui.com/images/avatar/small/mark.png' />
       <Comment.Content>
         <Comment.Author as='a'>Elliot Fu</Comment.Author>
         <Comment.Metadata>
@@ -224,13 +239,13 @@ class Semantic2 extends Component{
       </Comment.Content>
       <Comment.Group>
         <Comment>
-          <Comment.Avatar src='https://react.semantic-ui.com/images/avatar/small/lena.png' />
+          <Comment.Avatar src='https://react.semantic-ui.com/images/avatar/small/lindsay.png' />
           <Comment.Content>
             <Comment.Author as='a'>Jenny Hess</Comment.Author>
             <Comment.Metadata>
               <div>Just now</div>
             </Comment.Metadata>
-            <Comment.Text>Elliot you are always so right :)</Comment.Text>
+            <Comment.Text>Elliot you are always so right :</Comment.Text>
             <Comment.Actions>
               <Comment.Action>Reply</Comment.Action>
             </Comment.Actions>
@@ -257,13 +272,56 @@ class Semantic2 extends Component{
       <Form.TextArea />
       <Button content='Add Reply' labelPosition='left' icon='edit' primary />
     </Form>
-    
   </Comment.Group>
+        </Segment>
+
+
+    <Segment>
+            <Header textAlign='center'> Reveal 2nd Picture with Pop-up Feature</Header>
+            <Popup
+            trigger ={
+                <Reveal animated='fade' >
+                    <Reveal.Content visible>
+                        <Image src='https://react.semantic-ui.com/images/avatar/small/lindsay.png' />
+                    </Reveal.Content>
+                    <Reveal.Content hidden>
+                        <Image src='https://react.semantic-ui.com/images/avatar/small/lena.png' />
+                    </Reveal.Content>
+                </Reveal>
+                }
+            content = "This picture will change into different girl picture"
+            mouseLeaveDelay={800}  
+            inverted
+            />
+
+            <br/>
+            <Popup 
+                trigger={ 
+                    <Button 
+                        content = 'Add her photos'
+                        icon = 'add'
+                        label = {{ as: 'a', basic: true, content: '2,548 saved'}}
+                        labelPosition = 'right'
+                    />
+                }
+                content="When you click this, you will add this girl's photo to your phone"
+                basic
+            />
+            <br />
+            Find this girl?
+            <Popup 
+                trigger={ 
+                    <Image src='https://react.semantic-ui.com/images/avatar/small/lena.png' />
+                }
+                content="Where can you find this missing girl?"
+                basic
+            />
     </Segment>
+  
+            
     </div>
-
-    )}
-
+        )
+    }
 }
 
 export default Semantic2;
