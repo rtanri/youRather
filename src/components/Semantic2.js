@@ -13,9 +13,16 @@ import {
     Reveal,
     Popup,
     Tab,
+    Divider,
 } from 'semantic-ui-react'
 
 class Semantic2 extends Component{
+
+    state = { color: colors[0] }
+
+    handleColorChange = (e) => this.setState({ color: e.target.value })
+
+
     render(){
 
         const columns1 = _.times(20, (i) => (
@@ -30,7 +37,17 @@ class Semantic2 extends Component{
             { menuItem: 'Tab 3', render: () => <Tab.Pane>Tab 3 Content</Tab.Pane> },
           ]
           
+          const colors = [
+            'red',
+            'orange',
+            'yellow',
+            'green',
+          ]
+
+          const { color } = this.state
+
         return (
+          
     <div class="contentMargin gridChild">
             <Segment raised inverted color="gray">
                 <Header as="h2" textAlign='center' margin-bottom='100px'>Semantic UI: Grid</Header>
@@ -334,6 +351,27 @@ class Semantic2 extends Component{
 
     </Segment>
   
+    <Segment>
+      <Header textAlign='center'>Tab with Select</Header>
+
+      <div>
+        <select onChange={this.handleColorChange}>
+          {_.map(colors, (c) => (
+            <option key={c} value={c}>
+              {_.startCase(c)}
+            </option>
+          ))}
+        </select>
+
+        <Divider hidden />
+
+        <Tab
+          menu={{ color, inverted: true, attached: false, tabular: false }}
+          panes={panes}
+        />
+      </div>
+
+    </Segment>
             
     </div>
         )
