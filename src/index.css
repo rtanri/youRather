@@ -54,8 +54,8 @@ code {
 }
 
 .flex-even{
-  padding-left: 20%;
-  padding-right: 20%;
+  padding-left: 5%;
+  padding-right: 5%;
   display: flex;
   flex-direction:row;
   justify-content: space-evenly;

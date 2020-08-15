@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { setAuthedUser } from '../actions/authedUser'
+import Semantic2 from './Semantic2.js'
 import {
     Segment, 
     Button,
@@ -19,7 +20,7 @@ class Semantic1 extends Component{
         const sizes = ['tiny', 'big']
 
         return (
-        <div class="contentMargin">
+        <div class="contentMargin gridChild">
             <Segment raised inverted color="gray">
                 <Header as="h2" textAlign='center' margin-bottom='100px'>Semantic UI: Segment, Segment Group & Button</Header>
             </Segment>
@@ -388,14 +389,7 @@ class Semantic1 extends Component{
             </div>
             <br />
 
-            {/* GRID layout examples */}
-            <div>
-                <Segment raised inverted color='gray'>
-                    <Header as="h2" textAlign='center' margin-bottom='100px'>Semantic UI: Grid</Header>
-                </Segment>
-
-
-            </div>
+            <Semantic2/>
     </div>
 
     )}
