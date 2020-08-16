@@ -390,6 +390,7 @@ class Semantic1 extends Component{
             <br />
 
             <Semantic2/>
+
     </div>
 
     )}

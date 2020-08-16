@@ -124,7 +124,7 @@ class Semantic2 extends Component{
             <Segment>
                 <Header textAlign='center'>Grid Celled Normal or Internally with Column Width</Header>
                 <Grid celled='internally'>
-                    <Grid.Row padded>
+                    <Grid.Row>
                     <Grid.Column width={4}>
                         <Reveal animated='rotate'>
                             <Reveal.Content visible>
@@ -160,7 +160,7 @@ class Semantic2 extends Component{
 
             {/* Grid with Stretch */}
             <Segment>
-            <Header textAlign='center'>Grid Celled Normal or Internally with Column Width</Header>
+            <Header textAlign='center'>Grid with Stretch</Header>
             <Grid columns={3} divided>
                 <Grid.Row stretched>
                     <Grid.Column>
