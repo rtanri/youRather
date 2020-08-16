@@ -57,8 +57,8 @@ class Semantic2 extends Component{
             </Segment>
             
             <Segment>
-            <Header textAlign='center' >Basic Grid</Header>
-            <Grid>{columns1}</Grid>
+              <Header textAlign='center' >Basic Grid</Header>
+                <Grid>{columns1}</Grid>
             </Segment>
 
             {/* Grid with divider each rows */}

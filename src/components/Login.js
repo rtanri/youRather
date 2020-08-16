@@ -1,37 +1,20 @@
-import React, {Component, Fragment} from 'react'
+import React, {Component, } from 'react'
 import {connect} from 'react-redux'
 import {
     Segment,
-    Select,
     Image,
-    Icon,
     Button,
     Header,
-    Tab,
     Grid,
     Form,
 } from 'semantic-ui-react'
-import Semantic1 from './Semantic1'
+// import Semantic1 from './Semantic1'
 // import { render } from '@testing-library/react'
 import { setAuthedUser } from '../actions/authedUser'
 
 
-export class Login extends Component{
-    render(){
-        const panes = [
-            { menuItem: 'Login', render: () => <Tab.Pane><Tab1/></Tab.Pane> },
-            { menuItem: 'Dashboard', render: () => <Tab.Pane>Tab 3 Content</Tab.Pane> },
-            { menuItem: 'Semantic UI', render: () => <Tab.Pane><Semantic1/></Tab.Pane> },
-          ]
-        return(
-            <Tab panes={panes} />
-        )
-    }
-}
 
-
-
-class Tab1 extends Component{
+class Login extends Component{
     // Loading State and handleLoading()
     state = {
         loading: false
@@ -42,9 +25,7 @@ class Tab1 extends Component{
 
     render() {
         return (
-            <div 
-                class='contentMargin'
-            >
+            <div class='contentMargin'>
                 <Segment.Group className="loginMenu">        
                     <LoginHeader />
                     <LoginBody 
@@ -56,6 +37,7 @@ class Tab1 extends Component{
         )
     }
 }
+
 
 const LoginHeader = () => (
     <Header as='h2' textAlign='center' padded>
@@ -85,6 +67,7 @@ const CoverImage = () => (
         src = "images/ice-cream.jpeg" size = "medium" centered
     />
 )
+
 
 class LoginForm extends Component {
     state = {
@@ -121,9 +104,8 @@ class LoginForm extends Component {
         const disabled = value === '' ? true : false;
 
         return (
-           <Segment inverted secondary >
             <Form fluid className="formLogin">
-                <Header as="h3" inverted> 
+                <Header as="h3"> 
                     Sign-in here 
                 </Header>
                 <Form.Dropdown
@@ -138,11 +120,11 @@ class LoginForm extends Component {
                 />
                 <Form.Button content="Login" positive disabled={disabled} fluid />
             </Form>
-           </Segment>
-
+    
         )
     }
 }
+
 
 function mapStateToProps({users}) {
     return {

@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Semantic1 from './Semantic1'
-import Login from './Login'
+import Layout from './Layout'
 import { connect } from 'react-redux'
 import { handleInitialUsers, handleInitialPolls } from '../actions/shared'
 
@@ -17,7 +17,7 @@ class App extends Component {
 
   render() {
     return (
-      <Login />
+      <Layout />
     );
   }
 }
