@@ -229,7 +229,7 @@ class Semantic2 extends Component{
 
             {/* Comments with Comment Form */}
             <Segment>
-                <Header textAlign='center'>Responsive Width: Doubling and Stackable</Header>
+                <Header textAlign='center'>Comments with Input Form</Header>
                 <Comment.Group>
         <Header as='h3' dividing>
           Comments

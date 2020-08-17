@@ -25,6 +25,12 @@ code {
   margin: 20px auto;
 }
 
+/* UI Card Size */
+.ui.centered.card {
+  width: 500px;
+}
+
+
 .contentMargin{
   margin-left: 25%;
   margin-right: 25%;
@@ -37,6 +43,10 @@ code {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+}
+
+.cardUI{
+
 }
 
 .loginMenu {
