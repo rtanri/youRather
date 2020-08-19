@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import _ from 'lodash'
+import {connect} from 'react-redux'
 import {
     Segment,
     Header,
@@ -8,7 +9,7 @@ import {
     Image,
     Menu,
 } from 'semantic-ui-react'
-// import {connect} from 'react-redux'
+
 
 
 class Dashboard extends Component {
@@ -96,4 +97,25 @@ class MenuBar extends Component{
     }
 } 
 
-export default Dashboard
+function mapStateToProps({authedUser, users, polls}){
+
+    const answeredIds = Object.keys(users[authedUser].answers);
+
+    const answered = Object.values(polls)
+        .filter(poll => !answeredIds.includes(poll.id))
+        .sort((a,b) => b.timestamp - a.timestamp);
+
+    const unanswered = Object.values(polls)
+        .filter(poll => answeredIds.includes(poll.id))
+        .sort((a,b) => b.timestamp - a.timestamp);
+
+    return {
+        userQuestionData: {
+            answered,
+            unanswered
+        }
+    }
+}
+
+
+export default connect(mapStateToProps)(Dashboard)

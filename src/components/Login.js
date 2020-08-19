@@ -3,10 +3,11 @@ import {connect} from 'react-redux'
 import {
     Segment,
     Image,
-    Button,
     Header,
     Grid,
     Form,
+    Dimmer,
+    Loader
 } from 'semantic-ui-react'
 // import Semantic1 from './Semantic1'
 // import { render } from '@testing-library/react'
@@ -20,7 +21,7 @@ class Login extends Component{
         loading: false
     };
     handleLoading = () => {
-        console.log("Handle Loading")
+        this.setState({loading: true})
     }
 
     render() {
@@ -30,7 +31,8 @@ class Login extends Component{
                     <LoginHeader />
                     <LoginBody 
                         image={<CoverImage/>}
-                        form={<ConnectedLoginForm />}
+                        form={<ConnectedLoginForm onLoading={this.handleLoading} />}
+                        loading={this.state.loading}
                     />
                 </Segment.Group>
             </div>
@@ -47,11 +49,19 @@ const LoginHeader = () => (
 )
 
 
-const LoginBody = ({image, form}) => (
+const LoginBody = ({image, form, loading}) => (
     <div>
         <Grid padded textAlign="center">
             <Grid.Row className="login">
                 <Grid.Column width={16}>
+                {/* to set the loading animation when page is not ready */}
+                    {
+                        loading === true && (
+                            <Dimmer active inverted >
+                                <Loader inverted content="Loading" />
+                            </Dimmer>
+                        )
+                    }
                     {image}
                     <br />
                     {form}
@@ -80,10 +90,11 @@ class LoginForm extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        const {setAuthedUser} = this.props;
+        const {setAuthedUser, onLoading} = this.props;
         const authedUser = this.state.value;
 
         new Promise((res, rej) => {
+            onLoading();
             setTimeout(() => res(), 500);
         }).then(() => setAuthedUser(authedUser));
     };
@@ -104,7 +115,7 @@ class LoginForm extends Component {
         const disabled = value === '' ? true : false;
 
         return (
-            <Form fluid className="formLogin">
+            <Form fluid className="formLogin" onSubmit={this.handleSubmit}>
                 <Header as="h3"> 
                     Sign-in here 
                 </Header>
