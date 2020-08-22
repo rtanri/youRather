@@ -7,7 +7,6 @@ import {
     Tab,
     Grid,
     Image,
-    
 } from 'semantic-ui-react'
 
 
@@ -42,7 +41,6 @@ class Dashboard extends Component {
         return(
 
             <div class='contentMargin'>
-                {/* <MenuBar /> */}
                 <Segment.Group className="loginMenu" > 
                     <Header as='h2' textAlign='center' >Dashboard Page</Header>
                     <br />

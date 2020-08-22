@@ -62,7 +62,7 @@ class PollDetails extends Component {
                     </div>
                     {
                         answered
-                        ? (
+                        ? ( //if question is answered
                             <div className='form-body'>
                             <ul className='no-padding no-margin'>
                                 
@@ -85,7 +85,7 @@ class PollDetails extends Component {
                             </ul>
                             </div>
                         )
-                        : (
+                        : ( //question is not answered yet
                             <form className='form-body' onSubmit={this.submitAnswer} >
                                 <div className='radio_container-div'>
                                     <label className='radio_container'>
@@ -115,6 +115,8 @@ class PollDetails extends Component {
                         ) 
                     }
                     <hr/>
+                    
+                    {/* Card Content Extra */}
                     <div className='user-details'>
                             <ul className='user-detail-ul nav nav-account block'>
                                 <li className='user-info-li inline-block'>
