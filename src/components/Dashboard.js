@@ -7,7 +7,7 @@ import {
     Tab,
     Grid,
     Image,
-    Menu,
+    
 } from 'semantic-ui-react'
 
 
@@ -39,11 +39,10 @@ class Dashboard extends Component {
         )
 
 
-
         return(
 
             <div class='contentMargin'>
-                <MenuBar />
+                {/* <MenuBar /> */}
                 <Segment.Group className="loginMenu" > 
                     <Header as='h2' textAlign='center' >Dashboard Page</Header>
                     <br />
@@ -54,51 +53,6 @@ class Dashboard extends Component {
     }
 }
 
-class MenuBar extends Component{
-    state = {}
-
-    handleClick = (e, {name}) => this.setState({activeItem: name})
-    
-    render(){
-        const {activeItem} = this.state
-        
-        return(
-            <Menu fluid>
-                <Menu.Item 
-                    name ='Home'
-                    active={activeItem === 'Home'}
-                    onClick={this.handleClick}
-                />
-                <Menu.Item 
-                    name ='Leaderboard'
-                    active={activeItem === 'Leaderboard'}
-                    onClick={this.handleClick}
-                />
-
-                <Menu.Item 
-                    name='Add Question'
-                    active= {activeItem === 'Add Question'}
-                    onClick={this.handleClick}
-                />
-                <Menu.Item 
-                    name='Name'
-                    position = "right"
-                />
-                
-                <Menu.Item>
-                    <Image size="mini" src='https://react.semantic-ui.com/logo.png' />
-                </Menu.Item>
-
-                <Menu.Item 
-                    name='Logout'
-                    active= {activeItem === 'Add Question'}
-                    onClick={this.handleClick}
-                />
-
-            </Menu>
-        )
-    }
-} 
 
 function mapStateToProps({authedUser, users, polls}){
     // debugger

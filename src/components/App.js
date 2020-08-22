@@ -2,8 +2,11 @@ import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { handleInitialUsers, handleInitialPolls } from '../actions/shared'
+import Nav from './Nav'
 import Login from './Login'
 import Dashboard from './Dashboard'
+import Leaderboard from './Leaderboard'
+import AddQuestion from './AddQuestion'
 // import Layout from './Layout'
 
 
@@ -22,14 +25,17 @@ class App extends Component {
     return (
       <Router>
       <Fragment>
-
+        
         <Switch>
           { 
             authedUser === null ? (
             <Route path='/' component={Login} />
             ) : (
               <Fragment>
+              <Nav />
                 <Route path='/' exact component={Dashboard} />
+                <Route path='/add' exact component={AddQuestion} />
+                <Route path='/leaderboard' exact component={Leaderboard} />
               </Fragment>
             )
           }
