@@ -13,6 +13,7 @@ import {
 
 
 class Dashboard extends Component {
+    
     render(){
 
         const panes = [
@@ -36,6 +37,8 @@ class Dashboard extends Component {
                 </Grid.Column>
             ))
         )
+
+
 
         return(
 
@@ -98,7 +101,7 @@ class MenuBar extends Component{
 } 
 
 function mapStateToProps({authedUser, users, polls}){
-
+    // debugger
     const answeredIds = Object.keys(users[authedUser].answers);
 
     const answered = Object.values(polls)

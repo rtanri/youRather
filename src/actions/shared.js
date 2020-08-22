@@ -7,6 +7,7 @@ import { savePollAnswerAPI } from '../utils/api'
 import { showLoading, hideLoading } from 'react-redux-loading'
 import { savePollAPI } from '../utils/api'
 
+
 export function handleInitialPolls () {
     return (dispatch) => {
         dispatch(showLoading())

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { handleInitialUsers, handleInitialPolls } from '../actions/shared'
@@ -11,16 +11,32 @@ class App extends Component {
 
   //Add the handleInitialPolls as well in componentWillMount() to set the data before anyone signed-in
   componentWillMount() {
-    // const AUTHED_ID = null;
-    // const AUTHED_ID = 'Sarah Edo'
+    const AUTHED_ID = null;
     this.props.dispatch((handleInitialUsers(AUTHED_ID)))
     this.props.dispatch((handleInitialPolls())) 
   }
 
   render() {
+    const {authedUser} = this.props;
+    
     return (
-      <Dashboard />
-    );
+      <Router>
+      <Fragment>
+
+        <Switch>
+          { 
+            authedUser === null ? (
+            <Route path='/' component={Login} />
+            ) : (
+              <Fragment>
+                <Route path='/' exact component={Dashboard} />
+              </Fragment>
+            )
+          }
+        </Switch>
+      </Fragment>
+    </Router>
+    )
   }
 }
 
