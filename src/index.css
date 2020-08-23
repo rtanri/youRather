@@ -28,13 +28,21 @@ code {
 /* UI Card Size */
 .ui.centered.card {
   width: 500px;
+  margin-bottom: 30px;
 }
-
 
 .contentMargin{
   margin-left: 25%;
   margin-right: 25%;
   margin-bottom: 200px;
+}
+
+.loginMenu {
+  padding: 50px 150px;
+}
+
+.dashboardMenu{
+  padding: 50px 50px;
 }
 
 .gridChild {
@@ -46,12 +54,10 @@ code {
 }
 
 .cardUI{
-
+  width: 500px;
+  margin: 30px auto;
 }
 
-.loginMenu {
-  padding: 50px 150px;
-}
 
 .formLogin {
   width : 300px;

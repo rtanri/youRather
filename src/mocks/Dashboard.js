@@ -28,6 +28,7 @@ class Dashboard extends Component {
                         Answered
                     </li>
                 </ul>
+                    {/* empty answered and unanswered polls */}
                 {
                     !loadingBar.default && Object.keys(unansweredPolls).length === 0 && this.state.selectedTab === 'unanswered'
                     ? <p className='no-results'>no results</p>

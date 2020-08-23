@@ -12,17 +12,18 @@ class Poll extends Component {
         const { poll } = this.props
 
         if (poll === null ) {
-            return <p>This question doesn't exist</p>
+            return <p>That question doesn't exist</p>
         }
-
+        // debugger
         const { optionOne, optionTwo } = poll
         const { id } = this.props
 
         return (
-            <Link to={`/questions/${id}`} className='form margin poll-form'>
-            <div>
+            <Link to={`/questions/${id}`}>
+            <div class="cardUI">
                 <Card centered>
                     <Card.Content>
+                        {/* 
                         <Image
                         floated='left'
                         size='tiny'
@@ -30,7 +31,9 @@ class Poll extends Component {
                         />
                         <Card.Header>{author}</Card.Header>
                         <Card.Meta>{timestamp}</Card.Meta>
-                        <Card.Description>
+                        */}
+
+                        <Card.Description> 
                             Would you rather?
                         </Card.Description>
                     </Card.Content>
@@ -54,9 +57,9 @@ class Poll extends Component {
 
 
 // settle the author, authorAvatar, timestamp
-function mapStateToProps ({authedUser, polls, users}, { id, props }) {
+function mapStateToProps ({authedUser, polls}, { id }) {
     const poll = polls[id]
-
+    // debugger
     return {
         authedUser,
         poll,
