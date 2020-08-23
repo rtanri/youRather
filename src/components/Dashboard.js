@@ -21,7 +21,7 @@ class Dashboard extends Component {
     render(){
 
         const {answeredPolls, unansweredPolls} = this.props;
-
+        
         return(
 
             <div class='contentMargin'>
@@ -37,6 +37,7 @@ class Dashboard extends Component {
 }
 
 const panes = props => {
+
     const {answeredPolls, unansweredPolls} = props
 
     return [

@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import {connect} from 'react-redux'
 import {
     Header,
     Image,
@@ -8,6 +9,7 @@ import {
 
 class Leaderboard extends Component{
     render(){
+        const {users, data} = this.props
         return(
             <div class="contentMargin">
                 <Table>
@@ -21,53 +23,25 @@ class Leaderboard extends Component{
                 </Table.Header>
 
                 <Table.Body>
+                    {
+                        data.map((user, index) => (
+                            <Table.Row key={user.uid}>
+                                <Table.Cell>{index+1}</Table.Cell>
+                                <Table.Cell>
+                                    <Header as='h4' image>
+                                        <Image src={users[user.uid].avatarURL} rounded size='mini' />
+                                        <Header.Content>
+                                            {users[user.uid].name}
+                                        </Header.Content>
+                                    </Header>
+                                </Table.Cell>
 
-                    <Table.Row>
-                        <Table.Cell>1</Table.Cell>
-                        <Table.Cell>
-                            <Header as='h4' image>
-                                <Image src='https://react.semantic-ui.com/images/avatar/small/lena.png' rounded size='mini' />
-                                <Header.Content>
-                                    Name 1
-                                    <Header.Subheader>Human Resources</Header.Subheader>
-                                </Header.Content>
-                            </Header>
-                        </Table.Cell>
-
-                        <Table.Cell>12</Table.Cell>
-                        <Table.Cell>91</Table.Cell>
-                    </Table.Row>
-
-                    <Table.Row>
-                        <Table.Cell>2</Table.Cell>
-                        <Table.Cell>
-                            <Header as='h4' image>
-                                <Image src='https://react.semantic-ui.com/images/avatar/small/matthew.png' rounded size='mini' />
-                                <Header.Content>
-                                    Name 2
-                                    <Header.Subheader>Sales Engineer</Header.Subheader>
-                                </Header.Content>
-                            </Header>
-                        </Table.Cell>
-                        <Table.Cell>34</Table.Cell>
-                        <Table.Cell>81</Table.Cell>
-                    </Table.Row>
-
-                    <Table.Row>
-                        <Table.Cell>3</Table.Cell>
-                        <Table.Cell>
-                            <Header as='h4' image>
-                                <Image src='https://react.semantic-ui.com/images/avatar/small/lindsay.png' rounded size='mini' />
-                                <Header.Content>
-                                    Name 3
-                                    <Header.Subheader>Product Manager</Header.Subheader>
-                                </Header.Content>
-                            </Header>
-                        </Table.Cell>
-                        <Table.Cell>56</Table.Cell>
-                        <Table.Cell>71</Table.Cell>
-                    </Table.Row>
-
+                                <Table.Cell>{user.pollsCreated}</Table.Cell>
+                                <Table.Cell>{user.pollsAnswered}</Table.Cell>
+                            </Table.Row>
+                        ))
+                    }
+                
                 </Table.Body>
 
             </Table>
@@ -76,4 +50,52 @@ class Leaderboard extends Component{
     }
 }
 
-export default Leaderboard
+function mapStateToProps ({ users }) {
+    const data = Object.keys(users).map((uid) => {
+      return {
+        uid,
+        pollsCreated: users[uid].questions.length,
+        pollsAnswered: Object.keys(users[uid].answers).length
+      }  
+    }).sort((a, b) => (b.pollsCreated + b.pollsAnswered) - (a.pollsCreated + a.pollsAnswered))
+
+    return {
+        users,
+        data
+    }
+}
+
+export default connect(mapStateToProps)(Leaderboard)
+
+
+
+
+// <Table.Row>
+// <Table.Cell>2</Table.Cell>
+// <Table.Cell>
+//     <Header as='h4' image>
+//         <Image src='https://react.semantic-ui.com/images/avatar/small/matthew.png' rounded size='mini' />
+//         <Header.Content>
+//             Name 2
+//             <Header.Subheader>Sales Engineer</Header.Subheader>
+//         </Header.Content>
+//     </Header>
+// </Table.Cell>
+// <Table.Cell>34</Table.Cell>
+// <Table.Cell>81</Table.Cell>
+// </Table.Row>
+
+// <Table.Row>
+// <Table.Cell>3</Table.Cell>
+// <Table.Cell>
+//     <Header as='h4' image>
+//         <Image src='https://react.semantic-ui.com/images/avatar/small/lindsay.png' rounded size='mini' />
+//         <Header.Content>
+//             Name 3
+//             <Header.Subheader>Product Manager</Header.Subheader>
+//         </Header.Content>
+//     </Header>
+// </Table.Cell>
+// <Table.Cell>56</Table.Cell>
+// <Table.Cell>71</Table.Cell>
+// </Table.Row>
