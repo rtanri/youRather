@@ -115,7 +115,7 @@ class PollDetails extends Component {
                         ) 
                     }
                     <hr/>
-                    
+
                     {/* Card Content Extra */}
                     <div className='user-details'>
                             <ul className='user-detail-ul nav nav-account block'>
@@ -126,9 +126,6 @@ class PollDetails extends Component {
                                         className='medium profile-pic vertical-align'/>
                                     <span className="padding-left">{author}</span>
                                     <span className="padding-left time-stamp user-info-li">{timestamp}</span>
-                                </li>
-                                <li className='time-stamp user-info-li block'>
-                                    { timestamp }
                                 </li>
                             </ul>
                     </div>
