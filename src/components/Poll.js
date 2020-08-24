@@ -6,10 +6,11 @@ import {
     Button,
 } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
+import {formatDate} from '../utils/helpers'
 
 class Poll extends Component {
     render () {
-        const { poll } = this.props
+        const { poll, users } = this.props
 
         if (poll === null ) {
             return <p>That question doesn't exist</p>
@@ -17,23 +18,26 @@ class Poll extends Component {
         // debugger
         const { optionOne, optionTwo } = poll
         const { id } = this.props
+        const author = poll.author
+        const authorAvatar = users[poll.author].avatarURL
+        const timestamp = formatDate (poll.timestamp)
 
         return (
             <Link to={`/questions/${id}`}>
             <div class="cardUI">
                 <Card centered>
                     <Card.Content>
-                        {/* 
+                        
                         <Image
                         floated='left'
                         size='tiny'
                         src={authorAvatar}
                         />
                         <Card.Header>{author}</Card.Header>
-                        <Card.Meta>{timestamp}</Card.Meta>
-                        */}
+                        <Card.Meta>Posted on {timestamp}</Card.Meta>
+                       
 
-                        <Card.Description> 
+                        <Card.Description as='h2' textAlign='center'> 
                             Would you rather?
                         </Card.Description>
                     </Card.Content>
@@ -57,11 +61,12 @@ class Poll extends Component {
 
 
 // settle the author, authorAvatar, timestamp
-function mapStateToProps ({authedUser, polls}, { id }) {
+function mapStateToProps ({authedUser, polls, users}, { id }) {
     const poll = polls[id]
-    // debugger
+    debugger
     return {
         authedUser,
+        users,
         poll,
         id,
     }

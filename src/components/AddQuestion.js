@@ -62,17 +62,16 @@ class AddQuestion extends Component{
                         id ='form-input-control-first-option'
                         control={TextArea}
                         label='Enter First Option 👇🏼'
-                        placeholder='less than 50 characters'
+                        placeholder='less than 25 characters'
                         onChange={this.handleOptionOne}
                         required
-                        
                     />
 
                     <Form.Field
                         id='form-input-control-second-option'
                         control={TextArea}
                         label='Enter Second Option 👇🏼'
-                        placeholder='less than 50 characters'
+                        placeholder='less than 25 characters'
                         onChange={this.handleOptionTwo}
                         required
                     />
