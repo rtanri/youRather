@@ -34,7 +34,7 @@ class PollDetail extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        debugger
+        // debugger
         if (this.state.value !== '') {
         const {savePollAnswer} = this.props
         const answer = this.state.value
@@ -61,7 +61,6 @@ class PollDetail extends Component {
         const optionTwo = poll.optionTwo.text
         const isOneAnswered = poll.optionOne.votes.includes(authedUser)
         const isTwoAnswered = poll.optionTwo.votes.includes(authedUser)
-        const answered = isOneAnswered || isTwoAnswered
 
         const optionOneVotes = poll.optionOne.votes.length
         const optionTwoVotes = poll.optionTwo.votes.length
