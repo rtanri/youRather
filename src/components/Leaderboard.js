@@ -29,7 +29,7 @@ class Leaderboard extends Component{
                                 <Table.Cell>{index+1}</Table.Cell>
                                 <Table.Cell>
                                     <Header as='h4' image>
-                                        <Image src={users[user.uid].avatarURL} rounded size='mini' />
+                                        <Image src={users[user.uid].avatarURL} rounded size='tiny' />
                                         <Header.Content>
                                             {users[user.uid].name}
                                         </Header.Content>

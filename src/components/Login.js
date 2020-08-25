@@ -9,10 +9,9 @@ import {
     Dimmer,
     Loader
 } from 'semantic-ui-react'
+import { setAuthedUser } from '../actions/authedUser'
 // import Semantic1 from './Semantic1'
 // import { render } from '@testing-library/react'
-import { setAuthedUser } from '../actions/authedUser'
-
 
 
 class Login extends Component{

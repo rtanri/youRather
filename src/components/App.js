@@ -7,6 +7,8 @@ import Login from './Login'
 import Dashboard from './Dashboard'
 import Leaderboard from './Leaderboard'
 import AddQuestion from './AddQuestion'
+// import PollDetails from './PollDetails'
+import PageNotFound from './PageNotFound'
 // import Layout from './Layout'
 
 
@@ -34,8 +36,10 @@ class App extends Component {
               <Fragment>
               <Nav />
                 <Route path='/' exact component={Dashboard} />
-                <Route path='/add' exact component={AddQuestion} />
-                <Route path='/leaderboard' exact component={Leaderboard} />
+                {/* <Route path='/questions/:question_id' component={PollDetails} /> */}
+                <Route path='/add' component={AddQuestion} />
+                <Route path='/leaderboard' component={Leaderboard} />
+                <Route path='/error' component={PageNotFound} />
               </Fragment>
             )
           }
