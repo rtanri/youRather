@@ -63,7 +63,7 @@ class Poll extends Component {
 // settle the author, authorAvatar, timestamp
 function mapStateToProps ({authedUser, polls, users}, { id }) {
     const poll = polls[id]
-    debugger
+    // debugger
     return {
         authedUser,
         users,

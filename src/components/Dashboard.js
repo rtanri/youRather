@@ -25,7 +25,7 @@ class Dashboard extends Component {
         return(
 
             <div class='contentMargin'>
-                <Segment.Group className="dashboardMenu" > 
+                <Segment.Group className='dashboardMenu' > 
                     <Header as='h2' textAlign='center' >Dashboard Page</Header>
                     <br />
                      <Tab panes={panes({answeredPolls, unansweredPolls})} />

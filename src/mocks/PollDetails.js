@@ -77,6 +77,7 @@ class PollDetails extends Component {
                                         <p className='inline-p'>OR</p>
                                     </div>
                                 </li>
+                                
                                 <li className='padding-bottom fix-answered-li full-width'>
                                     <span className={isTwoAnswered ? 'answered' : ''}>{optionTwo}</span>
                                     {isTwoAnswered ? <span className='padding-left answered'> - - is your Answer!</span> : null} 

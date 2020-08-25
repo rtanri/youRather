@@ -1,28 +1,50 @@
-import React, {Component, Fragment} from 'react'
-import {connect} from 'react-router'
+import React, {Component} from 'react'
+import {connect} from 'react-redux'
 import {
     Card,
     Image,
     Button,
     Progress,
-    Popup
+    Popup,
+    Label,
+    Icon,
+    Radio,
 } from 'semantic-ui-react'
 import {formatDate} from '../utils/helpers'
 import {handleSavePollAnswer} from '../actions/shared'
 import {Redirect} from 'react-router-dom'
+import { savePollAnswer } from '../actions/polls'
+
+
 
 class PollDetail extends Component {
     
     state = {
-        selectedOption: ''
+        value: ''
     } 
 
-    handleSubmitAnswer = (e) => {
-        e.preventDefault()
-        const {savePollAnswer} = this.props
-        const answer = this.state.selectedOption
-        savePollAnswer(answer)
+    selectOption = (e) => {
+        console.log(e.target.value)
+        console.log(this.state.value)
+        this.setState({
+            value: e.target.value
+        })
+        console.log(this.state.value)
     }
+
+    handleSubmit = (e) => {
+        e.preventDefault()
+        debugger
+        if (this.state.value !== '') {
+        const {savePollAnswer} = this.props
+        const answer = this.state.value
+        savePollAnswer(answer)
+    }}
+
+    handleBack = () => {
+        this.props.history.push('/')
+    }
+
 
     render(){
 
@@ -60,22 +82,21 @@ class PollDetail extends Component {
                     <Card.Header>{author}</Card.Header>
                     <Card.Meta>{timestamp}</Card.Meta>
 
-                    <Card.Description>
-                        Would you rather?
-                    </Card.Description>
+                    <Card.Description as='h2' textAlign='center'> 
+                            Would you rather?
+                        </Card.Description>
                 </Card.Content>
-            {
-                answered ? ( //if question is answered
-                    <Card.Content extra>
+                <Card.Content extra>
+                {(isOneAnswered) ? 
+                    <div>
                             <Progress 
-                                percent={70} progress
+                                percent={optionOnePercentage} progress
                                 color='brown'
-                                label='People chose similar option like you'
+                                label='People chose same option'
                                 active
                             />
 
                             <br />
-
                             <div className='ui two buttons'>   
                               
                             <Popup    
@@ -85,24 +106,84 @@ class PollDetail extends Component {
                                         color='green'
                                         label='You have chosen'
                                         labelPosition='left'
-                                        content ='Tiger Brown Sugar'
+                                        content ={optionOne}
                                     />}
                             />  
                             </div>
-
-                    </Card.Content>
-                ) : ( //question is not yet answered
-
-                )
-            }
+                        
+                            <div class="marginButton" >
+                                <Button size="small" floated='right' onClick={this.handleBack}>
+                                    Back
+                                </Button>
+                            </div>
+                    </div> 
+                : (isTwoAnswered ? 
+                    <div>
+                    <Progress 
+                                percent={optionTwoPercentage} progress
+                                color='brown'
+                                label='People chose same option'
+                                active
+                            />
+                            <br />
+                            <div className='ui two buttons'>   
+                              
+                            <Popup    
+                                content='Click to change your option'
+                                trigger={      
+                                    <Button 
+                                        color='orange'
+                                        label='You have chosen'
+                                        labelPosition='left'
+                                        content ={optionTwo}
+                                    />}
+                            />  
+                            </div>
+                            <div class="marginButton" >
+                                <Button size="small" floated='right' onClick={this.handleBack}>
+                                    Back
+                                </Button>
+                            </div>
+                    </div>
+                :
+                <div class="cardExtraContent">  
+                    <Button.Group className='ui two buttons'>
+                        <Button 
+                            positive 
+                            color='green'
+                            value='optionOne'
+                            onClick={this.selectOption}
+                        >
+                            {optionOne}
+                        </Button>
+                        <Button.Or/>
+                        <Button 
+                            color='orange'
+                            value='optionTwo'
+                            onClick={this.selectOption}
+                        >
+                            {optionTwo}
+                        </Button>
+                    </Button.Group>
                     
+                    <div class="marginButton" >
+                        <Button size="small" floated='right'  onClick={this.handleSubmit}>
+                            Submit Answer
+                        </Button>
+                        <Button size="small" floated='right' onClick={this.handleBack}>
+                            Back
+                        </Button>
+
+                    </div>
+                </div>
+                )}
+            </Card.Content>
             </Card>
-                ) 
-            }
+
         </div>
-        )
-    }
+    )}
 }
+
 
 function mapStateToProps ({authedUser, polls, users}, props){
     const {question_id} = props.match.params
