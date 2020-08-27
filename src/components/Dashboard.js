@@ -1,13 +1,10 @@
 import React, {Component} from 'react'
-import _ from 'lodash'
 import {connect} from 'react-redux'
 import {handleInitialPolls} from '../actions/shared'
 import {
     Segment,
     Header,
     Tab,
-    Grid,
-    Image,
 } from 'semantic-ui-react'
 import Poll from './Poll'
 

@@ -6,9 +6,6 @@ import {
     Button,
     Progress,
     Popup,
-    Label,
-    Icon,
-    Radio,
 } from 'semantic-ui-react'
 import {formatDate} from '../utils/helpers'
 import {handleSavePollAnswer} from '../actions/shared'

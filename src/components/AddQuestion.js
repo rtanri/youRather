@@ -6,7 +6,6 @@ import {
     Form,
     Header,
     TextArea,
-    Button,
     Segment
 } from 'semantic-ui-react'
 
