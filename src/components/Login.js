@@ -42,8 +42,8 @@ class Login extends Component{
 
 const LoginHeader = () => (
     <Header as='h2' textAlign='center' padded>
-        <Header.Content>Welcome to Would You Rather App</Header.Content>
-        <Header.Subheader>Select your user to enter the app</Header.Subheader>
+        <Header.Content>Welcome to Would-You-Rather App</Header.Content>
+        <Header.Subheader>Know your appetite anytime, anywhere</Header.Subheader>
     </Header>
 )
 
@@ -73,7 +73,7 @@ const LoginBody = ({image, form, loading}) => (
 
 const CoverImage = () => (
     <Image 
-        src = "images/ice-cream.jpeg" size = "medium" centered
+        src = "images/food-table.jpg" size = "big" centered
     />
 )
 

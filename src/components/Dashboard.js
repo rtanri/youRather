@@ -23,7 +23,7 @@ class Dashboard extends Component {
 
             <div class='contentMargin'>
                 <Segment.Group className='dashboardMenu' > 
-                    <Header as='h2' textAlign='center' >Dashboard Page</Header>
+                    <DashboardHeader />
                     <br />
                      <Tab panes={panes({answeredPolls, unansweredPolls})} />
                 </Segment.Group>
@@ -32,6 +32,13 @@ class Dashboard extends Component {
 
     }
 }
+
+const DashboardHeader = () => (
+    <Header as='h2' textAlign='center' padded>
+        <Header.Content>Always Trust Your Hidden Appetite</Header.Content>
+        <Header.Subheader>Choose what you like the most!</Header.Subheader>
+    </Header>
+)
 
 const panes = props => {
 

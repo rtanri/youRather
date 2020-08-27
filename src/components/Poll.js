@@ -38,7 +38,7 @@ class Poll extends Component {
                        
 
                         <Card.Description as='h2' textAlign='center'> 
-                            Would you rather?
+                            Would you rather to enjoy...
                         </Card.Description>
                     </Card.Content>
 
