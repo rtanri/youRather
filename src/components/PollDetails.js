@@ -10,8 +10,6 @@ import {
 import {formatDate} from '../utils/helpers'
 import {handleSavePollAnswer} from '../actions/shared'
 import {Redirect} from 'react-router-dom'
-import { savePollAnswer } from '../actions/polls'
-
 
 
 class PollDetail extends Component {
